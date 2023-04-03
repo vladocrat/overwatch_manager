@@ -1,7 +1,11 @@
 #include "tcpserver.h"
 
-TcpServer::TcpServer(QObject *parent)
-    : QObject{parent}
+void TcpServer::listen()
+{
+
+}
+
+TcpServer::~TcpServer()
 {
 
 }
