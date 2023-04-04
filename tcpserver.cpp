@@ -4,7 +4,10 @@
 
 TcpServer::~TcpServer()
 {
-
+    for (auto pc : qAsConst(m_pendingConnections))
+    {
+        pc->deleteLater();
+    }
 }
 
 const QString TcpServer::toString() const
@@ -22,6 +25,8 @@ void TcpServer::listen()
     {
         qDebug() << "failed to listen on: " << toString();
     }
+
+    qDebug() << "listening on: " << toString();
 }
 
 void TcpServer::setAddress(const QHostAddress& address)
@@ -29,7 +34,7 @@ void TcpServer::setAddress(const QHostAddress& address)
     m_address = address;
 }
 
-void TcpServer::setPort(int port)
+void TcpServer::setPort(uint32_t port)
 {
     m_port = port;
 }
@@ -44,5 +49,6 @@ void TcpServer::incomingConnection(qintptr handle)
         m_pendingConnections.removeOne(pendingConnection);
     });
 
+    qDebug() << "new connection";
     m_pendingConnections.append(pendingConnection);
 }

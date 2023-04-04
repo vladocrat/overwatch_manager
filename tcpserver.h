@@ -19,7 +19,7 @@ public:
     const QString toString() const;
     void listen();
     void setAddress(const QHostAddress&);
-    void setPort(int);
+    void setPort(uint32_t);
     const QHostAddress address() const { return m_address; }
     const int port() const { return m_port; }
 
@@ -35,7 +35,7 @@ private:
     ~TcpServer();
 
     QHostAddress m_address = QHostAddress::Any;
-    int m_port = 0;
+    uint32_t m_port = 0;
     QList<PendingConnection*> m_pendingConnections;
 };
 
