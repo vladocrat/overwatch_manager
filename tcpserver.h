@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QList>
 
+#include "pendingconnection.h"
+
 class TcpServer final : public QTcpServer
 {
     Q_OBJECT
@@ -14,6 +16,7 @@ public:
         return &server;
     }
 
+    const QString toString() const;
     void listen();
     void setAddress(const QHostAddress&);
     void setPort(int);
@@ -33,5 +36,6 @@ private:
 
     QHostAddress m_address = QHostAddress::Any;
     int m_port = 0;
+    QList<PendingConnection*> m_pendingConnections;
 };
 

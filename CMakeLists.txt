@@ -14,8 +14,10 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
 
 set(PROJECT_SOURCES
         main.cpp
-        tcpserver.h
-        tcpserver.cpp
+        tcpserver.h tcpserver.cpp
+        connection.h connection.cpp
+        pendingconnection.h pendingconnection.cpp
+        protocol.h
         qml.qrc
 )
 
