@@ -3,6 +3,7 @@
 #include <QTcpSocket>
 #include <QObject>
 #include <QByteArray>
+#include <QMap>
 
 class Connection : public QObject
 {

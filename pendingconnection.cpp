@@ -6,10 +6,8 @@ namespace Internal
 {
 struct Message
 {
-    //TODO add json obj
     uint32_t command;
-    struct json {};
-    json payload;
+    QByteArray payload;
 };
 
 Message readMessage(Connection* connection)
@@ -32,6 +30,10 @@ PendingConnection::PendingConnection()
 void PendingConnection::handleData()
 {
     auto msg = Internal::readMessage(this);
+    QByteArray arr;
+    QDataStream s(&arr, QIODevice::WriteOnly);
+    s << msg.command;
+    send(0, arr);
 
     switch (msg.command)
     {
