@@ -1,9 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
-#include "tcpserver.h"
-
-#define server TcpServer::instance()
 
 int main(int argc, char *argv[])
 {
@@ -11,11 +8,6 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
     QGuiApplication app(argc, argv);
-
-    server->setAddress(QHostAddress("127.0.0.1"));
-    server->setPort(8082);
-    server->listen();
-
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
 

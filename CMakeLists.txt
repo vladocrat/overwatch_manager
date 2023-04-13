@@ -12,12 +12,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/network)
+
 set(PROJECT_SOURCES
         main.cpp
-        tcpserver.h tcpserver.cpp
-        connection.h connection.cpp
-        pendingconnection.h pendingconnection.cpp
-        protocol.h
+        network/connection.h network/connection.cpp
+        network/clientconnection.h network/clientconnection.cpp
+        network/protocol.h
         qml.qrc
 )
 

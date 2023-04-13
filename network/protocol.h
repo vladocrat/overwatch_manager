@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 
 namespace Protocol
 {
@@ -11,6 +12,11 @@ namespace Protocol
     {
 
     } // Server
+
+    namespace Bot
+    {
+        static const uint32_t B_Hello = 256;
+    } // Bot
 
     namespace Error
     {

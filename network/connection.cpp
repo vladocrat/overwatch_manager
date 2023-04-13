@@ -30,6 +30,7 @@ bool Connection::send(uint32_t command, const QByteArray& data)
     QDataStream stream(&msg, QIODevice::WriteOnly);
     QDataStream socketStream(m_socket);
     stream << command << data;
+    qDebug() << msg;
     socketStream << msg.size() << msg;
 
     if (!m_socket->flush())
