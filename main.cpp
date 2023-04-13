@@ -1,6 +1,10 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+
 #include "configurer.h"
+#include "clientconnection.h"
+
+#define client ClientConnection::instance()
 
 int main(int argc, char *argv[])
 {
@@ -11,7 +15,9 @@ int main(int argc, char *argv[])
 
     auto configurer = Config::Configurer("settings.ini");
     auto networkConfig = configurer.configureNetwork();
-    qDebug() << networkConfig.address() << " " << networkConfig.port();
+    client->setAddress(networkConfig.address());
+    client->setPort(networkConfig.port());
+    client->connectToHost();
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));

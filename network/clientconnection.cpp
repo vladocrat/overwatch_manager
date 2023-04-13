@@ -5,6 +5,7 @@
 
 namespace Internal
 {
+
 struct Message
 {
     uint32_t command;
@@ -24,7 +25,28 @@ Message readMessage(Connection* connection)
 
     return msg;
 }
+
 } // Internal
+
+void ClientConnection::connectToHost()
+{
+    socket()->connectToHost(m_address, m_port);
+
+    if (!socket()->waitForConnected())
+    {
+        qDebug() << "failed to connect to host";
+    }
+}
+
+void ClientConnection::setAddress(const QHostAddress& addr)
+{
+    m_address = addr;
+}
+
+void ClientConnection::setPort(uint32_t port)
+{
+    m_port = port;
+}
 
 ClientConnection::ClientConnection()
 {
