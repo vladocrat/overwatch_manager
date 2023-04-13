@@ -9,16 +9,24 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CONFIGS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/configs)
+set(NETWORK_PATH ${CMAKE_CURRENT_SOURCE_DIR}/network)
+
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/network)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/settings.ini ${CMAKE_CURRENT_BINARY_DIR}/settings.ini COPYONLY)
+
+include_directories(${NETWORK_PATH})
+include_directories(${CONFIGS_PATH})
 
 set(PROJECT_SOURCES
         main.cpp
         network/connection.h network/connection.cpp
         network/clientconnection.h network/clientconnection.cpp
         network/protocol.h
+        configs/configurer.h configs/configurer.cpp
+        configs/networkconfig.h configs/networkconfig.cpp
         qml.qrc
 )
 
