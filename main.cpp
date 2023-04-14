@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     auto networkConfig = configurer.configureNetwork();
     client->setAddress(networkConfig.address());
     client->setPort(networkConfig.port());
-    client->connectToHost();
+    //client->connectToHost();
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
