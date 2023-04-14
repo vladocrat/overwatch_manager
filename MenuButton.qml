@@ -6,19 +6,14 @@ Button {
 
     property alias backgroundObj: background
     property alias textObj: text
-
-    QtObject {
-        id: internal
-
-        property color backgroundColor: "#2e2f30"
-        property color clikedColor: "grey"
-    }
+    property color backgroundColor: "#2e2f30"
+    property color clikedColor: "grey"
 
     background: Rectangle {
         id: background
         radius: 10
-        color: internal.backgroundColor
-        border.color: internal.backgroundColor
+        color: root.backgroundColor
+        border.color: root.backgroundColor
         border.width: 2
 
         Text {
@@ -32,11 +27,11 @@ Button {
     }
 
     onPressed: {
-        background.color = internal.clikedColor;
+        background.color = root.clikedColor;
     }
 
     onReleased: {
-        background.color = internal.backgroundColor;
+        background.color = root.backgroundColor;
     }
 
 }
