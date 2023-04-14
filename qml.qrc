@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>MenuButton.qml</file>
+        <file>PageManager.qml</file>
     </qresource>
 </RCC>

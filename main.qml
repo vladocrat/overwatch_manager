@@ -37,7 +37,9 @@ ApplicationWindow {
         }
     }
 
-    StackLayout {
+    PageManager {
+        id: pageManager
+
         width: root.width
         height: root.height - topbar.height
 
@@ -46,23 +48,15 @@ ApplicationWindow {
             Layout.minimumWidth: parent.width
             Layout.alignment: Qt.AlignCenter
 
-            Button {
+            MenuButton {
                 Layout.alignment: Qt.AlignCenter
                 Layout.preferredWidth: 200
                 Layout.preferredHeight: 70
 
-                background: Rectangle {
-                    radius: 10
-                    color: "transparent"
-                    border.color: "grey"
-                    border.width: 2
+                textObj.text: "New Event"
 
-                    Text {
-                        text: "New Event"
-                        anchors.centerIn: parent
-                        color: "white"
-                        font.pointSize: 10
-                    }
+                onClicked: {
+                    pageManager.currentIndex = PageManager.Pages.Main;
                 }
             }
         }
