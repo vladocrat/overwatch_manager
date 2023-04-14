@@ -26,12 +26,13 @@ Button {
         }
     }
 
-    onPressed: {
-        background.color = root.clikedColor;
-    }
+    onPressedChanged: {
+        if (root.pressed && root.hovered) {
+            background.color = root.clikedColor;
+        }
 
-    onReleased: {
-        background.color = root.backgroundColor;
+        if (!root.pressed) {
+            background.color = root.backgroundColor;
+        }
     }
-
 }

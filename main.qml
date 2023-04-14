@@ -12,7 +12,7 @@ ApplicationWindow {
 
     visible: true
     title: qsTr("Overwatch manager")
-    color: "transparent"
+    color: "#99000000"
 
     header: ToolBar {
         id: topbar
@@ -24,17 +24,19 @@ ApplicationWindow {
         }
     }
 
-    Rectangle {
-        id: background
-        anchors.fill: parent
-        color: "#99000000"
+//    Rectangle {
+//        id: background
+//        anchors.fill: parent
+//        color: "#99000000"
 
-        FastBlur {
-            anchors.fill: background
-            source: background
-            radius: 30
-            cached: true
-        }
+
+//    }
+
+    FastBlur {
+        anchors.fill: parent
+        source: pageManager
+        radius: 20
+        cached: true
     }
 
     PageManager {
