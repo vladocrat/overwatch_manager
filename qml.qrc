@@ -4,5 +4,6 @@
         <file>MenuButton.qml</file>
         <file>PageManager.qml</file>
         <file>AuthenticationWrapper.qml</file>
+        <file>TextField.qml</file>
     </qresource>
 </RCC>

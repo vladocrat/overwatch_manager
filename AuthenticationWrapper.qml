@@ -34,18 +34,52 @@ Window {
                 root.x += diff.x;
                 root.y += diff.y;
             }
-
         }
     }
 
     ColumnLayout {
+        anchors.top: rec.bottom
         width: root.width
         height: root.height - rec.height
 
-        TextInput {
-            Layout.preferredHeight: 20
-            Layout.preferredWidth: parent.width - 20
+        TextField {
+            Layout.preferredHeight: 40
+            Layout.preferredWidth: root.width - 40
             Layout.alignment: Qt.AlignCenter
+        }
+
+        Rectangle {
+            id: btn
+            Layout.preferredHeight: 50
+            Layout.preferredWidth: root.width - 35
+            Layout.alignment: Qt.AlignCenter
+            color: "#0078D7"
+            border.color: "#0078D7"
+            border.width: 1
+            radius: 4
+
+            Text {
+                id: label
+                text: qsTr("Log In")
+                font.family: "Helvetica Neue"
+                font.pixelSize: 16
+                color: "#FFFFFF"
+                anchors.centerIn: parent
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+                cursorShape: Qt.PointingHandCursor
+                onPressed: {
+                    btn.color = "#005A9E";
+                    label.color = "#E5E5E5";
+                }
+                onReleased: {
+                    btn.color = "#0078D7";
+                    label.color = "#FFFFFF";
+                }
+            }
         }
     }
 }
