@@ -10,7 +10,6 @@ ApplicationWindow {
     minimumWidth: 900
     minimumHeight: 527
 
-    visible: true
     title: qsTr("Overwatch manager")
     color: "#99000000"
 
@@ -24,14 +23,6 @@ ApplicationWindow {
         }
     }
 
-//    Rectangle {
-//        id: background
-//        anchors.fill: parent
-//        color: "#99000000"
-
-
-//    }
-
     FastBlur {
         anchors.fill: parent
         source: pageManager
@@ -44,6 +35,36 @@ ApplicationWindow {
 
         width: root.width
         height: root.height - topbar.height
+
+        ColumnLayout {
+            Layout.alignment: Qt.AlignCenter
+            Layout.minimumHeight: parent.height * 3/4
+            Layout.minimumWidth: parent.width
+
+            MenuButton {
+                Layout.alignment: Qt.AlignCenter
+                Layout.preferredWidth: 200
+                Layout.preferredHeight: 70
+
+                textObj.text: "Register"
+
+                onClicked: {
+                    pageManager.currentIndex = PageManager.Pages.FirstWelcome;
+                }
+            }
+
+            MenuButton {
+                Layout.alignment: Qt.AlignCenter
+                Layout.preferredWidth: 200
+                Layout.preferredHeight: 70
+
+                textObj.text: "Login"
+
+                onClicked: {
+                    pageManager.currentIndex = PageManager.Pages.FirstWelcome;
+                }
+            }
+        }
 
         ColumnLayout {
             Layout.minimumHeight: parent.height
