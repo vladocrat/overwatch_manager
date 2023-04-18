@@ -3,6 +3,7 @@
 #include <QQuickView>
 #include <QList>
 #include <QQmlProperty>
+#include <QQuickWindow>
 
 #include "configurer.h"
 #include "clientconnection.h"
@@ -34,11 +35,14 @@ int main(int argc, char *argv[])
     engine.load(authenticationWrapper);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
+
+    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, &app,
+                     [url](QObject *obj, const QUrl &objUrl)
+    {
         if (!obj && url == objUrl)
             QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
+    },
+    Qt::QueuedConnection);
 
     engine.load(url);
 
@@ -46,19 +50,30 @@ int main(int argc, char *argv[])
 
     if (objects.size() <= 0)
     {
-        return app.exec();
+        qDebug() << "engine has no children";
+        return -1;
     }
 
-    auto window = objects.at(0);
+    auto authWindow = qobject_cast<QQuickWindow*>(objects.at(0));
 
-    if (!window)
+    if (!authWindow)
     {
         qDebug() << "auth window is nullptr";
-        return app.exec();
+        return -1;
     }
 
-    window->setProperty("visible", QVariant(false));
+    QObject::connect(authWindow, &QQuickWindow::visibilityChanged, &app, [authWindow, objects]()
+    {
+        if (authWindow->isVisible())
+        {
+            qDebug() << "is visible";
+            return;
+        }
 
+        authWindow->setProperty("visible", QVariant(false));
+        auto mainWindow = qobject_cast<QQuickWindow*>(objects.at(1));
+        mainWindow->setProperty("visible", QVariant(true));
+    });
 
     return app.exec();
 }
