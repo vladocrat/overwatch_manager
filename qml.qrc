@@ -3,7 +3,6 @@
         <file>main.qml</file>
         <file>MenuButton.qml</file>
         <file>PageManager.qml</file>
-        <file>AuthenticationPopup.qml</file>
         <file>AuthenticationWrapper.qml</file>
     </qresource>
 </RCC>

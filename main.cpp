@@ -66,12 +66,18 @@ int main(int argc, char *argv[])
     {
         if (authWindow->isVisible())
         {
-            qDebug() << "is visible";
             return;
         }
 
         authWindow->setProperty("visible", QVariant(false));
         auto mainWindow = qobject_cast<QQuickWindow*>(objects.at(1));
+
+        if (!mainWindow)
+        {
+            qDebug() << "main window is nullptr";
+            exit(-1);
+        }
+
         mainWindow->setProperty("visible", QVariant(true));
     });
 
