@@ -83,18 +83,17 @@ Window {
                         rec.currentIndex = 0;
                     }
 
-                    var word = rec.words[rec.currentIndex]
-                    rec.currentIndex++
-                    timer.interval = 200
+                    var word = rec.words[rec.currentIndex];
+                    rec.currentIndex++;
+                    timer.interval = 200;
                     timer.repeat = true;
 
                     //TODO move to timer obj trigger handler
-                    timer.triggered.connect(function()
-                    {
-                        text.text += word.charAt(i)
-                        i++
+                    timer.triggered.connect(function() {
+                        text.text += word.charAt(i);
+                        i++;
                         if (i === word.length) {
-                            timer.stop()
+                            timer.stop();
                         }
                     });
 
@@ -138,8 +137,7 @@ Window {
 
             ScriptAction {
                 script: {
-                    var word = rec.words[rec.currentIndex];
-                    deleteTimer.interval = 130;
+                    deleteTimer.interval = 150;
                     deleteTimer.repeat = true;
                     deleteTimer.start();
                 }
