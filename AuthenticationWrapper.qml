@@ -76,15 +76,18 @@ Window {
 
             ScriptAction {
                 script: {
-                    if (rec.currentIndex > rec.words.length) {
+                    var i = 0;
+
+                    if (rec.currentIndex >= rec.words.length) {
                         rec.currentIndex = 0;
+                        i = 0;
                     }
 
                     var word = rec.words[rec.currentIndex]
+                    console.log("rec.currentIndex: " + rec.currentIndex);
                     rec.currentIndex++
-                    var i = 0;
                     timer.interval = 150
-                    timer.repeat = word.length
+                    timer.repeat = true;
 
                     timer.triggered.connect(function()
                     {
@@ -100,7 +103,7 @@ Window {
             }
 
             PauseAnimation {
-                duration: 1500
+                duration: 2000
             }
 
             ScriptAction {
@@ -126,16 +129,10 @@ Window {
 
             ScriptAction {
                 script: {
-                    if (rec.currentIndex > rec.words.length)
-                    {
-                        rec.currentIndex = 0;
-                    }
-
                     var word = rec.words[rec.currentIndex];
                     deleteTimer.interval = 150;
-                    deleteTimer.repeat = word.length
-                    deleteTimer.triggered.connect(function()
-                    {
+                    deleteTimer.repeat = true;
+                    deleteTimer.triggered.connect(function() {
                         text.text = text.text.slice(0, -1);
 
                         if (text.text.length === 0) {
