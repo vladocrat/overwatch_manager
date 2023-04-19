@@ -47,9 +47,6 @@ Window {
             Layout.preferredHeight: 40
             Layout.preferredWidth: root.width - 40
             Layout.alignment: Qt.AlignCenter
-
-           // font.family: "Helvetica Neue"
-            //font.pixelSize: 16
         }
 
         Rectangle {
@@ -113,6 +110,30 @@ Window {
                     checkbox.forceActiveFocus();
                     checkbox.checked = !checkbox.checked;
                 }
+            }
+        }
+
+        ColumnLayout {
+            Layout.preferredHeight: 30
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignCenter
+
+            TextLink {
+                Layout.preferredHeight: 30
+                Layout.fillWidth: true
+                Layout.alignment: Qt.AlignCenter
+
+                text: "What is discord id?"
+                font.pixelSize: 16
+            }
+
+            TextLink {
+                Layout.preferredHeight: 30
+                Layout.fillWidth: true
+                Layout.alignment: Qt.AlignCenter
+
+                text: "Don't have an account?"
+                font.pixelSize: 16
             }
         }
     }
