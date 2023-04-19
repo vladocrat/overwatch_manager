@@ -62,6 +62,7 @@ Window {
 
         Timer {
             id: timer
+
         }
 
         SequentialAnimation {
@@ -80,15 +81,14 @@ Window {
 
                     if (rec.currentIndex >= rec.words.length) {
                         rec.currentIndex = 0;
-                        i = 0;
                     }
 
                     var word = rec.words[rec.currentIndex]
-                    console.log("rec.currentIndex: " + rec.currentIndex);
                     rec.currentIndex++
-                    timer.interval = 150
+                    timer.interval = 200
                     timer.repeat = true;
 
+                    //TODO move to timer obj trigger handler
                     timer.triggered.connect(function()
                     {
                         text.text += word.charAt(i)
@@ -109,13 +109,22 @@ Window {
             ScriptAction {
                 script: {
                     typingAnimation.stop();
-                    deleteAnimation.restart();
+                    if (!typingAnimation.running)
+                        deleteAnimation.restart();
                 }
             }
         }
 
         Timer {
             id: deleteTimer
+
+            onTriggered: {
+                text.text = text.text.slice(0, -1);
+
+                if (text.text.length === 0) {
+                    deleteTimer.stop();
+                }
+            }
         }
 
         SequentialAnimation {
@@ -130,36 +139,24 @@ Window {
             ScriptAction {
                 script: {
                     var word = rec.words[rec.currentIndex];
-                    deleteTimer.interval = 150;
+                    deleteTimer.interval = 130;
                     deleteTimer.repeat = true;
-                    deleteTimer.triggered.connect(function() {
-                        text.text = text.text.slice(0, -1);
-
-                        if (text.text.length === 0) {
-                            // A hack due to deleteTimer not stoping always
-                            // reason is unknown
-                            if (deleteTimer.running) {
-                                deleteTimer.stop();
-                            }
-                        }
-                    });
-
                     deleteTimer.start();
                 }
             }
 
             PauseAnimation {
-                duration: 1500
+                duration: 1300
             }
 
             ScriptAction {
                 script: {
                     deleteAnimation.stop();
-                    typingAnimation.restart();
+                    if (!deleteAnimation.running)
+                        typingAnimation.restart();
                 }
             }
         }
-
 
         MouseArea {
             id: mouseArea
