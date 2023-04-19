@@ -5,6 +5,9 @@ import QtQuick.Controls 2.1
 
 Window {
     id: root
+
+    property string fontFamily: "Helvetica Neue"
+
     minimumWidth: Screen.width * 0.15
     minimumHeight: Screen.height * 0.4
     maximumWidth: Screen.width * 0.15
@@ -15,9 +18,151 @@ Window {
     Rectangle {
         id: rec
 
+        property int currentIndex: 0
+        property var words: ["Welcome!", "こにちは!", "Salut!", "Bonjour!", "Välkommen!"]
+        property int wordLength: 0
+
         width: root.width
         height: root.height * 0.4
-        color: "red"
+
+        RowLayout {
+            spacing: 0
+            anchors.centerIn: parent
+
+            Text {
+                id: text
+                text: ""
+                font.family: root.fontFamily
+                font.pixelSize: 30
+
+                onTextChanged: {
+                    cursor.visible = true
+                    cursor.x = x + width
+                }
+            }
+
+            Rectangle {
+                id: cursor
+                width: 2
+                height: text.font.pixelSize
+                color: "black"
+                visible: false
+
+                NumberAnimation {
+                    target: cursor
+                    property: "opacity"
+                    from: 1
+                    to: 0
+                    duration: 500
+                    loops: Animation.Infinite
+                    running: true
+                }
+            }
+        }
+
+        Timer {
+            id: timer
+        }
+
+        SequentialAnimation {
+            id: typingAnimation
+            running: true
+            alwaysRunToEnd: false
+
+            PropertyAction {
+                target: text
+                property: "text"
+            }
+
+            ScriptAction {
+                script: {
+                    if (rec.currentIndex > rec.words.length) {
+                        rec.currentIndex = 0;
+                    }
+
+                    var word = rec.words[rec.currentIndex]
+                    rec.currentIndex++
+                    var i = 0;
+                    timer.interval = 150
+                    timer.repeat = word.length
+
+                    timer.triggered.connect(function()
+                    {
+                        text.text += word.charAt(i)
+                        i++
+                        if (i === word.length) {
+                            timer.stop()
+                        }
+                    });
+
+                    timer.start();
+                }
+            }
+
+            PauseAnimation {
+                duration: 1500
+            }
+
+            ScriptAction {
+                script: {
+                    typingAnimation.stop();
+                    deleteAnimation.restart();
+                }
+            }
+        }
+
+        Timer {
+            id: deleteTimer
+        }
+
+        SequentialAnimation {
+            id: deleteAnimation
+            running: false
+
+            PropertyAction {
+                target: text
+                property: "text"
+            }
+
+            ScriptAction {
+                script: {
+                    if (rec.currentIndex > rec.words.length)
+                    {
+                        rec.currentIndex = 0;
+                    }
+
+                    var word = rec.words[rec.currentIndex];
+                    deleteTimer.interval = 150;
+                    deleteTimer.repeat = word.length
+                    deleteTimer.triggered.connect(function()
+                    {
+                        text.text = text.text.slice(0, -1);
+
+                        if (text.text.length === 0) {
+                            // A hack due to deleteTimer not stoping always
+                            // reason is unknown
+                            if (deleteTimer.running) {
+                                deleteTimer.stop();
+                            }
+                        }
+                    });
+
+                    deleteTimer.start();
+                }
+            }
+
+            PauseAnimation {
+                duration: 1500
+            }
+
+            ScriptAction {
+                script: {
+                    deleteAnimation.stop();
+                    typingAnimation.restart();
+                }
+            }
+        }
+
 
         MouseArea {
             id: mouseArea
