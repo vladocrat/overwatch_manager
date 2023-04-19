@@ -4,17 +4,17 @@ import QtQuick.Layouts 1.15
 
 ComboBox {
     id: root
-    model: ["Week", "Month", "Never"]
-    currentIndex: 1
 
-    background:  Rectangle {
+    model: ["Week", "Month", "Never"]
+    currentIndex: 0
+
+    background: Rectangle {
         anchors.fill: parent
         color: "#e0dede"
         radius: 5
     }
 
     delegate: ItemDelegate {
-        id: delegate
         width: parent.width
         height: 30
 
@@ -30,11 +30,16 @@ ComboBox {
             Layout.fillWidth: true
             Layout.fillHeight: true
             color: "#36393F"
+
+            MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+                cursorShape: Qt.PointingHandCursor
+            }
         }
     }
 
     onCurrentIndexChanged: {
-        //dropdown.visible = false;
     }
 }
 
