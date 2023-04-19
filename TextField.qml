@@ -41,23 +41,25 @@ Rectangle {
 
     TextInput {
         id: input
+
+        property bool delimiterPressed: false
+
         anchors.centerIn: parent
         font.family: internal.family
         font.pixelSize: internal.pixelSize
         color: root.textInputColor
-        cursorPosition: 20
+        cursorPosition: 0
         selectByMouse: true
         focus: true
-        //TODO add placeholder functionality
         //TODO ad an input mask explanation:
         /*
             every discord name has char limit (obviously)
             also there is a hashtag symbol
             and fixed 4 numbers (discriminator)
         */
-        //TODO this regexp is for email, needs to be rewritten
-        validator: RegExpValidator { regExp: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/ }
+        validator: RegExpValidator { regExp: /^[a-zA-Z0-9]+#[0-9]{4}$/ }
     }
+
 
 
     MouseArea {
