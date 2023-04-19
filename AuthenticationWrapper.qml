@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Layouts 1.12
+import QtQuick.Controls 2.1
 
 Window {
     id: root
@@ -46,6 +47,9 @@ Window {
             Layout.preferredHeight: 40
             Layout.preferredWidth: root.width - 40
             Layout.alignment: Qt.AlignCenter
+
+           // font.family: "Helvetica Neue"
+            //font.pixelSize: 16
         }
 
         Rectangle {
@@ -78,6 +82,36 @@ Window {
                 onReleased: {
                     btn.color = "#0078D7";
                     label.color = "#FFFFFF";
+                }
+            }
+        }
+
+        Rectangle {
+            Layout.preferredHeight: 40
+            Layout.preferredWidth: 40
+            Layout.alignment: Qt.AlignCenter
+            color: "#2C2C2C"
+            border.color: "#3C3C3C"
+            border.width: 1
+            radius: 4
+
+            CheckBox {
+                id: checkbox
+                anchors.left: parent.left
+                anchors.verticalCenter: parent.verticalCenter
+                font.family: "Helvetica Neue"
+                text: qsTr("Remember me")
+                font.pixelSize: 14
+                checked: false
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+                cursorShape: Qt.PointingHandCursor
+                onPressed: {
+                    checkbox.forceActiveFocus();
+                    checkbox.checked = !checkbox.checked;
                 }
             }
         }
