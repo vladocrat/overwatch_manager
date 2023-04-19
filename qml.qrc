@@ -7,5 +7,6 @@
         <file>TextField.qml</file>
         <file>TextLink.qml</file>
         <file>CustomCheckbox.qml</file>
+        <file>DropdownMenu.qml</file>
     </qresource>
 </RCC>

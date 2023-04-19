@@ -90,10 +90,19 @@ Window {
             Layout.alignment: Qt.AlignCenter
 
             CustomCheckbox {
+                id: checkbox
                 Layout.preferredHeight: 20
                 Layout.preferredWidth: 135
                 Layout.alignment: Qt.AlignLeft
                 Layout.leftMargin: 20
+            }
+
+            DropdownMenu {
+                id: timeMenu
+                Layout.preferredHeight: 25
+                Layout.preferredWidth: 100
+                Layout.alignment: Qt.AlignJustify
+                visible: checkbox.checked
             }
 
             Item {
