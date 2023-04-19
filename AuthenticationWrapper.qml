@@ -42,6 +42,7 @@ Window {
         anchors.top: rec.bottom
         width: root.width
         height: root.height - rec.height
+        anchors.topMargin: 20
 
         TextField {
             Layout.preferredHeight: 40
@@ -83,37 +84,37 @@ Window {
             }
         }
 
-        Rectangle {
-            Layout.preferredHeight: 40
-            Layout.preferredWidth: 40
+        RowLayout {
+            Layout.maximumHeight: 40
+            Layout.fillWidth: true
             Layout.alignment: Qt.AlignCenter
-            color: "#2C2C2C"
-            border.color: "#3C3C3C"
-            border.width: 1
-            radius: 4
 
-            CheckBox {
-                id: checkbox
-                anchors.left: parent.left
-                anchors.verticalCenter: parent.verticalCenter
-                font.family: "Helvetica Neue"
-                text: qsTr("Remember me")
-                font.pixelSize: 14
-                checked: false
+            CustomCheckbox {
+                Layout.preferredHeight: 20
+                Layout.preferredWidth: 135
+                Layout.alignment: Qt.AlignLeft
+                Layout.leftMargin: 20
             }
 
-            MouseArea {
-                anchors.fill: parent
-                hoverEnabled: true
-                cursorShape: Qt.PointingHandCursor
-                onPressed: {
-                    checkbox.forceActiveFocus();
-                    checkbox.checked = !checkbox.checked;
-                }
+            Item {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
             }
         }
 
+        Item {
+            Layout.maximumHeight: 1
+            Layout.fillWidth: true
+        }
+
+        Rectangle {
+            Layout.fillWidth: true
+            Layout.preferredHeight: 1
+            color: "#D9D9D9"
+        }
+
         ColumnLayout {
+            id: footer
             Layout.preferredHeight: 30
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignCenter
@@ -125,6 +126,10 @@ Window {
 
                 text: "What is discord id?"
                 font.pixelSize: 16
+
+                onClicked: {
+                    //TODO
+                }
             }
 
             TextLink {
@@ -134,6 +139,16 @@ Window {
 
                 text: "Don't have an account?"
                 font.pixelSize: 16
+
+                onClicked: {
+                    //TODO
+                }
+            }
+
+            Item {
+                Layout.maximumHeight: footer.height / 4
+                Layout.minimumHeight: footer.height / 4
+                Layout.fillWidth: true
             }
         }
     }

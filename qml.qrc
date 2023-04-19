@@ -6,5 +6,6 @@
         <file>AuthenticationWrapper.qml</file>
         <file>TextField.qml</file>
         <file>TextLink.qml</file>
+        <file>CustomCheckbox.qml</file>
     </qresource>
 </RCC>
