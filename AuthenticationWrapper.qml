@@ -20,50 +20,55 @@ Window {
 
         anchors.fill: parent
 
-        LoginScreen {
-            id: loginScreen
+        initialItem: loginScreen
+    }
 
-            Layout.fillHeight: true
-            Layout.fillWidth: true
+    LoginScreen {
+        id: loginScreen
 
-            onMoved: {
-                root.x += loginScreen.x
-                root.y += loginScreen.y
-            }
+        visible: false
 
-            onLoginClicked: {
-                //TODO implement
-            }
-
-            onIdInfoCliked: {
-                manager.currentIndex = PageManager.RegistrationScreen.IDInfo;
-            }
-
-            onNoAccountClicked: {
-                manager.currentIndex = PageManager.RegistrationScreen.Register;
-            }
+        onVisibleChanged: {
+            if (loginScreen.visible)
+                loginScreen.focus = true;
         }
 
-        IDInfoScreen {
-            id: infoScren
-
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-
-            target: root
-
-            onBackClicked: {
-                manager.currentIndex = PageManager.RegistrationScreen.Login;
-            }
+        onMoved: {
+            root.x += loginScreen.x
+            root.y += loginScreen.y
         }
 
-        RegistrationScreen {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
+        onLoginClicked: {
+            //TODO implement
+        }
 
-            onBackClicked: {
-                manager.currentIndex = PageManager.RegistrationScreen.Login;
-            }
+        onIdInfoCliked: {
+            manager.push(infoScreen);
+        }
+
+        onNoAccountClicked: {
+            manager.push(registrationScreen)
+        }
+    }
+
+    IDInfoScreen {
+        id: infoScreen
+
+        visible: false
+        target: root
+
+        onBackClicked: {
+            manager.pop();
+        }
+    }
+
+    RegistrationScreen {
+        id: registrationScreen
+
+        visible: false
+
+        onBackClicked: {
+            manager.pop();
         }
     }
 }
