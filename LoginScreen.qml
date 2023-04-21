@@ -10,10 +10,12 @@ Item {
     signal idInfoCliked();
     //registration required
     signal noAccountClicked();
+    //to make window dragable by rectangle
+    signal positionChanged();
 
     property string fontFamily: "Helvetica Neue"
 
-    Rectangle {
+    DraggableItem {
         id: rec
 
         property int currentIndex: 0 //TODO randomize
@@ -21,6 +23,11 @@ Item {
 
         width: root.width
         height: root.height * 0.4
+        target: root
+
+        onPositionChanged: {
+            root.positionChanged();
+        }
 
         RowLayout {
             spacing: 0
@@ -150,24 +157,6 @@ Item {
                     if (!deleteAnimation.running)
                         typingAnimation.restart();
                 }
-            }
-        }
-
-        MouseArea {
-            id: mouseArea
-
-            property point pos
-
-            anchors.fill: parent
-
-            onPressed: {
-                mouseArea.pos = Qt.point(mouse.x, mouse.y);
-            }
-
-            onPositionChanged: {
-                var diff = Qt.point(mouse.x - mouseArea.pos.x, mouse.y - mouseArea.pos.y);
-                root.x += diff.x;
-                root.y += diff.y;
             }
         }
     }

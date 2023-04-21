@@ -21,8 +21,15 @@ Window {
         anchors.fill: parent
 
         LoginScreen {
+            id: loginScreen
+
             Layout.fillHeight: true
             Layout.fillWidth: true
+
+            onPositionChanged: {
+                root.x += loginScreen.x
+                root.y += loginScreen.y
+            }
 
             onLoginClicked: {
                 //TODO implement

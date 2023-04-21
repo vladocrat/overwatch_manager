@@ -12,5 +12,6 @@
         <file>IDInfoScreen.qml</file>
         <file>RegistrationScreen.qml</file>
         <file>RoundCornersButton.qml</file>
+        <file>DraggableItem.qml</file>
     </qresource>
 </RCC>

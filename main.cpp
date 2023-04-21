@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
             exit(-1);
         }
 
-        mainWindow->setProperty("visible", QVariant(true));
+        //mainWindow->setProperty("visible", QVariant(true));
     });
 
     return app.exec();
