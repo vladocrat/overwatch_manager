@@ -33,7 +33,6 @@ Rectangle {
         font.family: "Helvetica Neue"
         font.pixelSize: 16
         color: colors.textDefault
-
     }
 
     MouseArea {

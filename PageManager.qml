@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.12
 StackLayout {
     id: root
 
-    enum RegistrataionScreen {
+    enum RegistrationScreen {
         Login = 0,
         IDInfo,
         Register

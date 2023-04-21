@@ -26,7 +26,7 @@ Window {
             Layout.fillHeight: true
             Layout.fillWidth: true
 
-            onPositionChanged: {
+            onMoved: {
                 root.x += loginScreen.x
                 root.y += loginScreen.y
             }
@@ -45,11 +45,15 @@ Window {
         }
 
         IDInfoScreen {
+            id: infoScren
+
             Layout.fillHeight: true
             Layout.fillWidth: true
 
+            target: root
+
             onBackClicked: {
-                manager.currentIndex = PageManager.Registration.Login;
+                manager.currentIndex = PageManager.RegistrationScreen.Login;
             }
         }
 
@@ -58,7 +62,7 @@ Window {
             Layout.fillWidth: true
 
             onBackClicked: {
-                manager.currentIndex = PageManager.Registration.Login;
+                manager.currentIndex = PageManager.RegistrationScreen.Login;
             }
         }
     }

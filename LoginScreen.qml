@@ -11,7 +11,7 @@ Item {
     //registration required
     signal noAccountClicked();
     //to make window dragable by rectangle
-    signal positionChanged();
+    signal moved();
 
     property string fontFamily: "Helvetica Neue"
 
@@ -26,7 +26,7 @@ Item {
         target: root
 
         onPositionChanged: {
-            root.positionChanged();
+            root.moved();
         }
 
         RowLayout {
@@ -66,7 +66,6 @@ Item {
 
         Timer {
             id: timer
-
         }
 
         SequentialAnimation {
@@ -171,9 +170,10 @@ Item {
             Layout.preferredHeight: 40
             Layout.preferredWidth: root.width - 40
             Layout.alignment: Qt.AlignCenter
+
+            focus: true
         }
 
-        //TODO make a standalone component
         RoundCornersButton {
             id: btn
 

@@ -5,7 +5,7 @@ Item {
 
     signal positionChanged();
 
-    property QtObject target
+    required property QtObject target
 
     MouseArea {
         id: mouseArea
