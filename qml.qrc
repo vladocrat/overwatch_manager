@@ -8,5 +8,6 @@
         <file>TextLink.qml</file>
         <file>CustomCheckbox.qml</file>
         <file>DropdownMenu.qml</file>
+        <file>LoginScreen.qml</file>
     </qresource>
 </RCC>
