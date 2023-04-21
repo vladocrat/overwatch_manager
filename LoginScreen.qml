@@ -5,14 +5,19 @@ import QtQuick.Controls 2.1
 Item {
     id: root
 
+    signal loginClicked();
+    //info about discord id
+    signal idInfoCliked();
+    //registration required
+    signal noAccountClicked();
+
     property string fontFamily: "Helvetica Neue"
 
     Rectangle {
         id: rec
 
-        property int currentIndex: 0
+        property int currentIndex: 0 //TODO randomize
         property var words: ["Welcome!", "こにちは!", "Salut!", "Bonjour!", "환영!", "欢迎!", "Välkommen!"]
-        property int wordLength: 0
 
         width: root.width
         height: root.height * 0.4
@@ -179,6 +184,7 @@ Item {
             Layout.alignment: Qt.AlignCenter
         }
 
+        //TODO make a standalone component
         Rectangle {
             id: btn
             Layout.preferredHeight: 50
@@ -209,6 +215,10 @@ Item {
                 onReleased: {
                     btn.color = "#0078D7";
                     label.color = "#FFFFFF";
+                }
+
+                onClicked: {
+                    root.loginClicked();
                 }
             }
         }
@@ -266,7 +276,7 @@ Item {
                 font.pixelSize: 16
 
                 onClicked: {
-                    //TODO
+                    root.idInfoCliked();
                 }
             }
 
@@ -279,7 +289,7 @@ Item {
                 font.pixelSize: 16
 
                 onClicked: {
-                    //TODO
+                    root.noAccountClicked();
                 }
             }
 

@@ -15,7 +15,36 @@ Window {
     visible: true
     //flags: Qt.FramelessWindowHint | Qt.Window
 
-    LoginScreen {
-        anchors.fill: parent
+    PageManager {
+        id: manager
+
+        LoginScreen {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+
+            onLoginClicked: {
+                //TODO implement
+            }
+
+            idInfoCliked: {
+                manager.currentIndex = PageManager.RegistrationScreen.IDInfo;
+            }
+
+            onNoAccountClicked: {
+                manager.currentIndex = PageManager.RegistrationScreen.Register;
+            }
+        }
+
+        IDInfoScreen {
+            onBackClicked: {
+                manager.currentIndex = PageManager.Registration.Login;
+            }
+        }
+
+        RegistrationScreen {
+            onBackClicked: {
+                manager.currentIndex = PageManager.Registration.Login;
+            }
+        }
     }
 }

@@ -9,5 +9,7 @@
         <file>CustomCheckbox.qml</file>
         <file>DropdownMenu.qml</file>
         <file>LoginScreen.qml</file>
+        <file>IDInfoScreen.qml</file>
+        <file>RegistrationScreen.qml</file>
     </qresource>
 </RCC>
