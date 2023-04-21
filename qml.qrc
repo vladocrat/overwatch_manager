@@ -11,5 +11,6 @@
         <file>LoginScreen.qml</file>
         <file>IDInfoScreen.qml</file>
         <file>RegistrationScreen.qml</file>
+        <file>RoundCornersButton.qml</file>
     </qresource>
 </RCC>

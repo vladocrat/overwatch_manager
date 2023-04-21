@@ -185,41 +185,15 @@ Item {
         }
 
         //TODO make a standalone component
-        Rectangle {
+        RoundCornersButton {
             id: btn
+
             Layout.preferredHeight: 50
             Layout.preferredWidth: root.width - 35
             Layout.alignment: Qt.AlignCenter
-            color: "#0078D7"
-            border.color: "#0078D7"
-            border.width: 1
-            radius: 4
 
-            Text {
-                id: label
-                text: qsTr("Log In")
-                font.family: "Helvetica Neue"
-                font.pixelSize: 16
-                color: "#FFFFFF"
-                anchors.centerIn: parent
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                hoverEnabled: true
-                cursorShape: Qt.PointingHandCursor
-                onPressed: {
-                    btn.color = "#005A9E";
-                    label.color = "#E5E5E5";
-                }
-                onReleased: {
-                    btn.color = "#0078D7";
-                    label.color = "#FFFFFF";
-                }
-
-                onClicked: {
-                    root.loginClicked();
-                }
+            onClicked: {
+                root.loginClicked();
             }
         }
 

@@ -18,6 +18,8 @@ Window {
     PageManager {
         id: manager
 
+        anchors.fill: parent
+
         LoginScreen {
             Layout.fillHeight: true
             Layout.fillWidth: true
@@ -26,7 +28,7 @@ Window {
                 //TODO implement
             }
 
-            idInfoCliked: {
+            onIdInfoCliked: {
                 manager.currentIndex = PageManager.RegistrationScreen.IDInfo;
             }
 
@@ -36,12 +38,18 @@ Window {
         }
 
         IDInfoScreen {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+
             onBackClicked: {
                 manager.currentIndex = PageManager.Registration.Login;
             }
         }
 
         RegistrationScreen {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+
             onBackClicked: {
                 manager.currentIndex = PageManager.Registration.Login;
             }
