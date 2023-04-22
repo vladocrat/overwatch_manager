@@ -28,6 +28,7 @@ set(PROJECT_SOURCES
         configs/configurer.h configs/configurer.cpp
         configs/networkconfig.h configs/networkconfig.cpp
         qml.qrc
+        src.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

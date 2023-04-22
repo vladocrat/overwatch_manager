@@ -14,6 +14,5 @@
         <file>RoundCornersButton.qml</file>
         <file>DraggableItem.qml</file>
         <file>ArrowButton.qml</file>
-        <file>Polygon.qml</file>
     </qresource>
 </RCC>

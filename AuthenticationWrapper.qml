@@ -28,11 +28,6 @@ Window {
 
         visible: false
 
-        onVisibleChanged: {
-            if (loginScreen.visible)
-                loginScreen.focus = true;
-        }
-
         onMoved: {
             root.x += loginScreen.x
             root.y += loginScreen.y

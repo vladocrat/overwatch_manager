@@ -7,15 +7,10 @@ DraggableItem {
 
     signal backClicked();
 
-    Keys.onEscapePressed: {
-        root.backClicked();
-    }
-
-    onVisibleChanged:  {
-        if (root.visible) {
-            root.focus = true;
-        }
-    }
+    property alias header: header
+    property alias content: content
+    property alias imgage: image
+    property alias imageTranscription: imageTranscription
 
     ArrowButton {
         id: backButton
@@ -42,6 +37,8 @@ DraggableItem {
         }
 
         Item {
+            id: header
+
             Layout.fillHeight: true
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignCenter
@@ -61,11 +58,50 @@ DraggableItem {
             Layout.alignment: Qt.AlignCenter
 
             Text {
-                anchors.centerIn: parent
+                id: content
 
-                text: "What is a discord id?"
-                font.pixelSize: 20
+                anchors.centerIn: parent
+                width: parent.width
+                height: parent.height
+                leftPadding: 20
+
+                lineHeight: 1.5
+                wrapMode: Text.Wrap
+                textFormat: Text.RichText
+                text: "Discord id is a unique way for discord to identify you!<br>It consists of your nickname and 4 digits<br>Your discord id can be found in the settings<br>or at the bottom left corner just near your name."
+                font.pixelSize: 15
                 font.family: "Helvetica Neue"
+            }
+        }
+
+        Item {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignCenter
+
+            Image {
+                id: image
+
+                anchors.centerIn: parent
+                width: parent.width / 2
+                height: parent.height / 2
+                source: "sources/images/discord_id_example.jpg"
+            }
+        }
+
+        Item {
+           //Layout.fillHeight: true
+            Layout.minimumHeight: 30
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignCenter
+
+            Text {
+                id: imageTranscription
+
+                anchors.centerIn: parent
+                font.pixelSize: 15
+                font.family: "Helvetica Neue"
+                text: "In this case full discord id is: Sherlock#0238"
             }
         }
     }
