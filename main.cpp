@@ -31,10 +31,10 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    const QUrl authenticationWrapper("qrc:/AuthenticationWrapper.qml");
+    const QUrl authenticationWrapper("qrc:/qml/AuthenticationWrapper.qml");
     engine.load(authenticationWrapper);
 
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
+    const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
 
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, &app,
                      [url](QObject *obj, const QUrl &objUrl)

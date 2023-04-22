@@ -1,18 +1,18 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
-        <file>MenuButton.qml</file>
-        <file>PageManager.qml</file>
-        <file>AuthenticationWrapper.qml</file>
-        <file>TextField.qml</file>
-        <file>TextLink.qml</file>
-        <file>CustomCheckbox.qml</file>
-        <file>DropdownMenu.qml</file>
-        <file>LoginScreen.qml</file>
-        <file>IDInfoScreen.qml</file>
-        <file>RegistrationScreen.qml</file>
-        <file>RoundCornersButton.qml</file>
-        <file>DraggableItem.qml</file>
-        <file>ArrowButton.qml</file>
+        <file>qml\main.qml</file>
+        <file>qml\MenuButton.qml</file>
+        <file>qml\PageManager.qml</file>
+        <file>qml\AuthenticationWrapper.qml</file>
+        <file>qml\TextField.qml</file>
+        <file>qml\TextLink.qml</file>
+        <file>qml\CustomCheckbox.qml</file>
+        <file>qml\DropdownMenu.qml</file>
+        <file>qml\LoginScreen.qml</file>
+        <file>qml\IDInfoScreen.qml</file>
+        <file>qml\RegistrationScreen.qml</file>
+        <file>qml\RoundCornersButton.qml</file>
+        <file>qml\DraggableItem.qml</file>
+        <file>qml\ArrowButton.qml</file>
     </qresource>
 </RCC>

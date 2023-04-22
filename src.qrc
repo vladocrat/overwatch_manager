@@ -1,5 +1,5 @@
-<!DOCTYPE RCC><RCC version="1.0">
-<qresource>
-    <file>sources\images\discord_id_example.jpg</file>
-</qresource>
+<RCC>
+    <qresource prefix="/">
+        <file>qml/sources/images/discord_id_example.jpg</file>
+    </qresource>
 </RCC>
