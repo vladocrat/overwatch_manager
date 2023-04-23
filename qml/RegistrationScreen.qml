@@ -87,11 +87,13 @@ DraggableItem {
                         id: toolTip
 
                         visible: false
-                        delay: 1000
+                        delay: 500
 
                         contentItem: Text {
                             text: "To recieve the code <b>DM</b> the bot \">register\""
                             color: "#bfbaba"
+                            font.family: "Helvetica Neue"
+                            font.pixelSize: 14
                         }
                     }
                 }
