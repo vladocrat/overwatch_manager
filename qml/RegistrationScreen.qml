@@ -83,19 +83,30 @@ DraggableItem {
                     font.pixelSize: 20
                     font.family: "Helvetica Neue"
 
-                    MouseArea {
-                        anchors.fill: parent
-                        hoverEnabled: true
-                        ToolTip.visible: false
-                        ToolTip.text: "To recieve the code <b>DM</b> the bot \">register\""
+                    CustomToolTip {
+                        id: toolTip
 
-                        onEntered: {
-                            ToolTip.visible = true;
-                        }
+                        visible: false
+                        delay: 1000
 
-                        onExited: {
-                            ToolTip.visible = false;
+                        contentItem: Text {
+                            text: "To recieve the code <b>DM</b> the bot \">register\""
+                            color: "#bfbaba"
                         }
+                    }
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+
+                    onEntered: {
+                        toolTip.open();
+                    }
+
+                    onExited: {
+                        toolTip.hide();
                     }
                 }
             }

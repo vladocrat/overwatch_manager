@@ -14,5 +14,6 @@
         <file>qml/RoundCornersButton.qml</file>
         <file>qml/DraggableItem.qml</file>
         <file>qml/ArrowButton.qml</file>
+        <file>qml/CustomToolTip.qml</file>
     </qresource>
 </RCC>

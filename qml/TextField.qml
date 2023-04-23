@@ -11,7 +11,7 @@ Rectangle {
     property color textInputColor: "#FFFFFF"
     property color placeholderTextColor: "#bfbaba"
 
-    color:  "#2C2C2C"
+    color: "#2C2C2C"
     border.color: "#3C3C3C"
     border.width: 1
     radius: 4

@@ -4,36 +4,36 @@
 #include <QPainter>
 #include <QQmlEngine>
 
-FPSText::FPSText(QQuickItem *parent): QQuickPaintedItem(parent), _currentFPS(0), _cacheCount(0)
+FPSText::FPSText(QQuickItem* parent): QQuickPaintedItem(parent), m_currentFPS(0), m_cacheCount(0)
 {
-    _times.clear();
+    m_times.clear();
     setFlag(QQuickItem::ItemHasContents);
 }
 
 void FPSText::recalculateFPS()
 {
     qint64 currentTime = QDateTime::currentDateTime().toMSecsSinceEpoch();
-    _times.push_back(currentTime);
+    m_times.push_back(currentTime);
 
-    while (_times[0] < currentTime - 1000) {
-        _times.pop_front();
+    while (m_times[0] < currentTime - 1000) {
+        m_times.pop_front();
     }
 
-    int currentCount = _times.length();
-    _currentFPS = (currentCount + _cacheCount) / 2;
+    int currentCount = m_times.length();
+    m_currentFPS = (currentCount + m_cacheCount) / 2;
 
-    if (currentCount != _cacheCount)
-        emit fpsChanged(_currentFPS);
+    if (currentCount != m_cacheCount)
+        emit fpsChanged(m_currentFPS);
 
-    _cacheCount = currentCount;
+    m_cacheCount = currentCount;
 }
 
 int FPSText::fps()const
 {
-    return _currentFPS;
+    return m_currentFPS;
 }
 
-void FPSText::paint(QPainter *painter)
+void FPSText::paint(QPainter* painter)
 {
     recalculateFPS();
     QBrush brush(Qt::transparent);
@@ -41,7 +41,6 @@ void FPSText::paint(QPainter *painter)
     painter->setBrush(brush);
     painter->setPen(Qt::NoPen);
     painter->setRenderHint(QPainter::Antialiasing);
-    painter->drawText(QPoint{0, 0}, QString::number(_currentFPS));
     painter->drawRoundedRect(0, 0, boundingRect().width(), boundingRect().height(), 0, 0);
     update();
 }

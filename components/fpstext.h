@@ -24,7 +24,7 @@ signals:
 
 private:
     void recalculateFPS();
-    int _currentFPS;
-    int _cacheCount;
-    QVector<qint64> _times;
+    int m_currentFPS;
+    int m_cacheCount;
+    QVector<qint64> m_times;
 };
