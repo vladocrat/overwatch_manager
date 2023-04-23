@@ -11,6 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CONFIGS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/configs)
 set(NETWORK_PATH ${CMAKE_CURRENT_SOURCE_DIR}/network)
+set(COMPONENTS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/components)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
@@ -19,6 +20,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/settings.ini ${CMAKE_CURRENT_BINARY_D
 
 include_directories(${NETWORK_PATH})
 include_directories(${CONFIGS_PATH})
+include_directories(${COMPONENTS_PATH})
 
 set(PROJECT_SOURCES
         main.cpp
@@ -27,6 +29,7 @@ set(PROJECT_SOURCES
         network/protocol.h
         configs/configurer.h configs/configurer.cpp
         configs/networkconfig.h configs/networkconfig.cpp
+        components/fpstext.h components/fpstext.cpp
         qml.qrc
         src.qrc
 )

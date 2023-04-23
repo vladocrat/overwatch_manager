@@ -37,13 +37,13 @@ DraggableItem {
         }
 
         Item {
-            id: header
-
             Layout.fillHeight: true
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignCenter
 
             Text {
+                id: header
+
                 anchors.centerIn: parent
 
                 text: "What is a discord id?"
@@ -61,6 +61,7 @@ DraggableItem {
                 id: content
 
                 anchors.centerIn: parent
+
                 width: parent.width
                 height: parent.height
                 leftPadding: 20
@@ -83,6 +84,7 @@ DraggableItem {
                 id: image
 
                 anchors.centerIn: parent
+
                 width: parent.width / 2
                 height: parent.height / 2
                 source: "sources/images/discord_id_example.jpg"
@@ -90,7 +92,6 @@ DraggableItem {
         }
 
         Item {
-           //Layout.fillHeight: true
             Layout.minimumHeight: 30
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignCenter
@@ -99,6 +100,7 @@ DraggableItem {
                 id: imageTranscription
 
                 anchors.centerIn: parent
+
                 font.pixelSize: 15
                 font.family: "Helvetica Neue"
                 text: "In this case full discord id is: Sherlock#0238"

@@ -12,8 +12,8 @@ Window {
     minimumHeight: Screen.height * 0.4
     maximumWidth: Screen.width * 0.15
     maximumHeight: Screen.height * 0.4
+
     visible: true
-    //flags: Qt.FramelessWindowHint | Qt.Window
 
     PageManager {
         id: manager
@@ -61,6 +61,7 @@ Window {
         id: registrationScreen
 
         visible: false
+        target: root
 
         onBackClicked: {
             manager.pop();

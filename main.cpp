@@ -7,6 +7,7 @@
 
 #include "configurer.h"
 #include "clientconnection.h"
+#include "fpstext.h"
 
 #define client ClientConnection::instance()
 #define configurer Config::Configurer("settings.ini")
@@ -20,6 +21,12 @@ void initClient()
     client->setPort(networkConfig.port());
     client->connectToHost();
 }
+
+void registerTypes()
+{
+    FPSText::registerType();
+}
+
 } // Internal
 
 int main(int argc, char *argv[])
@@ -28,6 +35,8 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
     QGuiApplication app(argc, argv);
+
+    Internal::registerTypes();
 
     QQmlApplicationEngine engine;
 
