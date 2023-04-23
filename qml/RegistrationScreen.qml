@@ -40,32 +40,26 @@ DraggableItem {
             }
         }
 
-        CustomToolTip {
+        Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignCenter
 
-            popup: Popup {
-                id: info
+            border.width: 1
 
-                width: 60
-                height: 70
-                contentItem: Text {
-                    textFormat: Text.RichText
-                    text: qsTr("To recieve the code <b>DM</b> the bot \">register\"")
-                }
-            }
+            MouseArea {
+                id: ma
 
-            contentItem: Rectangle {
                 anchors.fill: parent
-                border.width: 2
-                Component.onCompleted: console.log(width + " " + height)
+                ToolTip.visible: false;
+                ToolTip.text: "text"
 
-                Text {
-                    anchors.fill: parent
-                    text: "testText"
-                    font.pixelSize: 20
-                    font.family: "Helvetica Neue"
+                onEntered: {
+                    ToolTip.visible = true;
+                }
+
+                onExited: {
+                    ToolTip.visible = false;
                 }
             }
         }
@@ -88,6 +82,21 @@ DraggableItem {
                     text: "Enter the code recieved from the bot"
                     font.pixelSize: 20
                     font.family: "Helvetica Neue"
+
+                    MouseArea {
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        ToolTip.visible: false
+                        ToolTip.text: "To recieve the code <b>DM</b> the bot \">register\""
+
+                        onEntered: {
+                            ToolTip.visible = true;
+                        }
+
+                        onExited: {
+                            ToolTip.visible = false;
+                        }
+                    }
                 }
             }
         }
