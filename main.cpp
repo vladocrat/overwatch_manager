@@ -24,6 +24,8 @@ void initClient()
 
 void registerTypes()
 {
+    qmlRegisterSingletonType(QUrl("qrc:/qml/ApplicationSettings.qml"), "ApplicationSettings", 1, 0, "AppSettings");
+
     FPSText::registerType();
 }
 

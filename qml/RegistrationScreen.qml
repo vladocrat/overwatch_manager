@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
+import ApplicationSettings 1.0
 
 DraggableItem {
     id: root
@@ -92,7 +93,7 @@ DraggableItem {
                         contentItem: Text {
                             text: "To recieve the code <b>DM</b> the bot \">register\""
                             color: "#bfbaba"
-                            font.family: "Helvetica Neue"
+                            font.family: AppSettings.fontFamily
                             font.pixelSize: 14
                         }
                     }

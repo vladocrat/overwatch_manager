@@ -15,5 +15,6 @@
         <file>qml/DraggableItem.qml</file>
         <file>qml/ArrowButton.qml</file>
         <file>qml/CustomToolTip.qml</file>
+        <file>qml/ApplicationSettings.qml</file>
     </qresource>
 </RCC>
