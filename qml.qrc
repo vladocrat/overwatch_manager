@@ -16,5 +16,7 @@
         <file>qml/ArrowButton.qml</file>
         <file>qml/CustomToolTip.qml</file>
         <file>qml/ApplicationSettings.qml</file>
+        <file>qml/SingleDigitInput.qml</file>
+        <file>qml/RegistrationInput.qml</file>
     </qresource>
 </RCC>

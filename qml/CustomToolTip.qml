@@ -18,7 +18,7 @@ ToolTip {
             property: "opacity"
             from: 0
             to: 1
-            duration: 700
+            duration: 500
         }
     }
 
@@ -30,7 +30,7 @@ ToolTip {
             property: "opacity"
             from: 1
             to: 0
-            duration: 700
+            duration: 500
 
             onRunningChanged: {
                 if (!fadeOut.running) {

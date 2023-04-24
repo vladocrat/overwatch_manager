@@ -13,6 +13,7 @@ Item {
 
     Text {
         id: linkText
+
         text: root.text
         font.underline: true
         font.family: AppSettings.fontFamily

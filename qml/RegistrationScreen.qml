@@ -41,17 +41,15 @@ DraggableItem {
             }
         }
 
-        Rectangle {
+        ColumnLayout {
             Layout.fillHeight: true
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignCenter
 
-            border.width: 1
-
-            MouseArea {
-                id: ma
-
-                anchors.fill: parent
+            RegistrationInput {
+                Layout.minimumHeight: 50
+                Layout.minimumWidth: 200
+                Layout.alignment: Qt.AlignCenter
             }
         }
 
