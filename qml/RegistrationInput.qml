@@ -13,6 +13,20 @@ Item {
             digit1Rect.forceActiveFocus();
     }
 
+    QtObject {
+        id: internal
+
+        function digit(event, from, to) {
+            from.setDigit(event);
+            to.forceActiveFocus();
+        }
+
+        function backspace(from, to) {
+            from.digit = 0;
+            to.forceActiveFocus();
+        }
+    }
+
     RowLayout {
         anchors.centerIn: parent
         spacing: 10
@@ -24,10 +38,11 @@ Item {
             height: 40
 
             Keys.onPressed: {
-               if (digit1Rect.isDigit(event)) {
-                   digit1Rect.digit = (event.key - Qt.Key_0);
-                   digit2Rect.forceActiveFocus();
-               }
+                if (digit1Rect.isDigit(event)) {
+                    internal.digit(event, digit1Rect, digit2Rect);
+                } else if (event.key === Qt.Key_Backspace) {
+                    internal.backspace(digit1Rect, digit1Rect);
+                }
             }
         }
 
@@ -39,8 +54,9 @@ Item {
 
             Keys.onPressed: {
                 if (digit2Rect.isDigit(event)) {
-                    digit2Rect.digit = (event.key - Qt.Key_0);
-                    digit3Rect.forceActiveFocus();
+                    internal.digit(event, digit2Rect, digit3Rect);
+                } else if (event.key === Qt.Key_Backspace) {
+                    internal.backspace(digit2Rect, digit1Rect);
                 }
             }
         }
@@ -53,8 +69,9 @@ Item {
 
             Keys.onPressed: {
                 if (digit3Rect.isDigit(event)) {
-                    digit3Rect.digit = (event.key - Qt.Key_0);
-                    digit4Rect.forceActiveFocus();
+                    internal.digit(event, digit3Rect, digit4Rect);
+                } else if (event.key === Qt.Key_Backspace) {
+                    internal.backspace(digit3Rect, digit2Rect);
                 }
             }
         }
@@ -67,7 +84,9 @@ Item {
 
             Keys.onPressed: {
                 if (digit4Rect.isDigit(event)) {
-                    digit4Rect.digit = (event.key - Qt.Key_0);
+                    internal.digit(event, digit4Rect, digit4Rect);
+                } else if (event.key === Qt.Key_Backspace) {
+                    internal.backspace(digit4Rect, digit3Rect);
                 }
             }
         }

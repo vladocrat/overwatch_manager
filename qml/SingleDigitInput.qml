@@ -11,22 +11,14 @@ Rectangle {
         return (event.key >= Qt.Key_0 && event.key <= Qt.Key_9);
     }
 
+    function setDigit(event) {
+        root.digit = (event.key - Qt.Key_0);
+    }
+
     color: "#f2f2f2"
     border.color: "#d9d9d9"
     border.width: 1
     radius: 5
-
-    onFocusChanged: {
-        if (!root.focus) {
-            return;
-        }
-
-//        if (digitText.text === "") {
-//            cursor.visible = true;
-//        } else {
-//            cursor.visible = false;
-//        }
-    }
 
     RowLayout {
         anchors.centerIn: parent
@@ -35,7 +27,6 @@ Rectangle {
         Text {
             id: digitText
 
-            Component.onCompleted: console.log(digitText.height + " " + digitText.width)
             text: root.digit.toString();
             font.pixelSize: 20
         }
