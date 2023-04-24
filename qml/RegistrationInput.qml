@@ -17,6 +17,8 @@ Item {
     QtObject {
         id: internal
 
+        property var indicies: [0, 1, 2, 3];
+
         function isDigit(event) {
             return (event.key >= Qt.Key_0 && event.key <= Qt.Key_9);
         }
@@ -80,6 +82,14 @@ Item {
                     digit4Rect.forceActiveFocus();
                 }
             }
+
+            Keys.onRightPressed: {
+                digit2Rect.forceActiveFocus();
+            }
+
+            Keys.onLeftPressed: {
+                digit4Rect.forceActiveFocus();
+            }
         }
 
         SingleDigitInput {
@@ -94,6 +104,14 @@ Item {
                 } else if (event.key === Qt.Key_Backspace) {
                     internal.backspace(digit2Rect, digit1Rect);
                 }
+            }
+
+            Keys.onRightPressed: {
+                digit3Rect.forceActiveFocus();
+            }
+
+            Keys.onLeftPressed: {
+                digit1Rect.forceActiveFocus();
             }
         }
 
@@ -110,6 +128,14 @@ Item {
                     internal.backspace(digit3Rect, digit2Rect);
                 }
             }
+
+            Keys.onRightPressed: {
+                digit4Rect.forceActiveFocus();
+            }
+
+            Keys.onLeftPressed: {
+                digit2Rect.forceActiveFocus();
+            }
         }
 
         SingleDigitInput {
@@ -124,6 +150,14 @@ Item {
                 } else if (event.key === Qt.Key_Backspace) {
                     internal.backspace(digit4Rect, digit3Rect);
                 }
+            }
+
+            Keys.onRightPressed: {
+                digit1Rect.forceActiveFocus();
+            }
+
+            Keys.onLeftPressed: {
+                digit3Rect.forceActiveFocus();
             }
         }
     }
