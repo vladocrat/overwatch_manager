@@ -166,7 +166,7 @@ Item {
         height: root.height - rec.height
         anchors.topMargin: 20
 
-        TextField {
+        CustomTextField {
             Layout.preferredHeight: 40
             Layout.preferredWidth: root.width - 40
             Layout.alignment: Qt.AlignCenter

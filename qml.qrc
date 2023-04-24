@@ -4,7 +4,7 @@
         <file>qml/MenuButton.qml</file>
         <file>qml/PageManager.qml</file>
         <file>qml/AuthenticationWrapper.qml</file>
-        <file>qml/TextField.qml</file>
+        <file>qml/CustomTextField.qml</file>
         <file>qml/TextLink.qml</file>
         <file>qml/CustomCheckbox.qml</file>
         <file>qml/DropdownMenu.qml</file>

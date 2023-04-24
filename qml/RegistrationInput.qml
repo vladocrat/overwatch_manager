@@ -44,8 +44,8 @@ Item {
         SingleDigitInput {
             id: digit1Rect
 
-            width: 40
-            height: 40
+            width: root.width * 0.2
+            height: root.width * 0.2
 
             Clipboard {
                 id: clipboard
@@ -68,7 +68,7 @@ Item {
                     }
 
                     if (isNaN(parseInt(clipboard.text))) {
-                        console.log("no numbers in clipboard");
+                        console.warn("no numbers in clipboard");
                         return;
                     }
 
@@ -85,8 +85,8 @@ Item {
         SingleDigitInput {
             id: digit2Rect
 
-            width: 40
-            height: 40
+            width: root.width * 0.2
+            height: root.width * 0.2
 
             Keys.onPressed: {
                 if (internal.isDigit(event)) {
@@ -100,8 +100,8 @@ Item {
         SingleDigitInput {
             id: digit3Rect
 
-            width: 40
-            height: 40
+            width: root.width * 0.2
+            height: root.width * 0.2
 
             Keys.onPressed: {
                 if (internal.isDigit(event)) {
@@ -115,8 +115,8 @@ Item {
         SingleDigitInput {
             id: digit4Rect
 
-            width: 40
-            height: 40
+            width: root.width * 0.2
+            height: root.width * 0.2
 
             Keys.onPressed: {
                 if (internal.isDigit(event)) {

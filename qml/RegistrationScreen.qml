@@ -7,6 +7,7 @@ DraggableItem {
     id: root
 
     signal backClicked();
+    signal registerClicked();
 
     QtObject {
         id: internal
@@ -28,6 +29,11 @@ DraggableItem {
             registrationInput.forceActiveFocus();
             internal.regInputFocused = true;
         }
+    }
+
+    //basically enter
+    Keys.onReturnPressed: {
+        root.registrationClicked();
     }
 
     ArrowButton {
@@ -68,11 +74,19 @@ DraggableItem {
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignCenter
 
+            spacing: 50
+
             RegistrationInput {
                 id: registrationInput
 
                 Layout.minimumHeight: 50
                 Layout.minimumWidth: 200
+                Layout.alignment: Qt.AlignCenter
+            }
+
+            RoundCornersButton {
+                Layout.minimumHeight: 50
+                Layout.minimumWidth: 250
                 Layout.alignment: Qt.AlignCenter
             }
         }
@@ -125,6 +139,12 @@ DraggableItem {
                     }
                 }
             }
+        }
+
+        Item {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignCenter
         }
     }
 }
