@@ -1,12 +1,20 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
+import QtQuick.Layouts 1.15
 
 Item {
     id: root
+
     width: 200
     height: 50
 
-    Row {
+    onFocusChanged: {
+        if (root.focus)
+            digit1Rect.forceActiveFocus();
+    }
+
+    RowLayout {
+        anchors.centerIn: parent
         spacing: 10
 
         SingleDigitInput {
@@ -14,7 +22,6 @@ Item {
 
             width: 40
             height: 40
-            focus: true
 
             Keys.onPressed: {
                if (digit1Rect.isDigit(event)) {

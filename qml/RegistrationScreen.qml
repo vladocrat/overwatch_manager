@@ -8,6 +8,28 @@ DraggableItem {
 
     signal backClicked();
 
+    QtObject {
+        id: internal
+
+        property bool regInputFocused: false;
+    }
+
+    onVisibleChanged: {
+        if (root.visible)
+            root.forceActiveFocus();
+    }
+
+    Keys.onEscapePressed: {
+        root.backClicked();
+    }
+
+    Keys.onPressed: {
+        if (!registrationInput.focus && !internal.regInputFocused) {
+            registrationInput.forceActiveFocus();
+            internal.regInputFocused = true;
+        }
+    }
+
     ArrowButton {
         id: backButton
 
@@ -47,6 +69,8 @@ DraggableItem {
             Layout.alignment: Qt.AlignCenter
 
             RegistrationInput {
+                id: registrationInput
+
                 Layout.minimumHeight: 50
                 Layout.minimumWidth: 200
                 Layout.alignment: Qt.AlignCenter

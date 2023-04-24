@@ -21,11 +21,11 @@ Rectangle {
             return;
         }
 
-        if (digitText.text === "") {
-            cursor.visible = true;
-        } else {
-            cursor.visible = false;
-        }
+//        if (digitText.text === "") {
+//            cursor.visible = true;
+//        } else {
+//            cursor.visible = false;
+//        }
     }
 
     RowLayout {
@@ -35,6 +35,7 @@ Rectangle {
         Text {
             id: digitText
 
+            Component.onCompleted: console.log(digitText.height + " " + digitText.width)
             text: root.digit.toString();
             font.pixelSize: 20
         }
@@ -45,7 +46,7 @@ Rectangle {
             width: 2
             height: digitText.font.pixelSize
             color: "red"
-            visible: false
+            visible: root.focus
 
             NumberAnimation on opacity {
                 from: 1
