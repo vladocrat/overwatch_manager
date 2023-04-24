@@ -44,15 +44,12 @@ Rectangle {
     TextInput {
         id: input
 
-        property bool delimiterPressed: false
-
         anchors.centerIn: parent
         font.family: internal.family
         font.pixelSize: internal.pixelSize
         color: root.textInputColor
         cursorPosition: 0
         selectByMouse: true
-        focus: true
         //TODO add an realtime input mask explanation:
         /*
             every discord name has char limit (obviously)

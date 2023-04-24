@@ -14,7 +14,11 @@ Item {
     QtObject {
         id: internal
 
-        property bool regInputFocused: false;
+        property bool regInputFocused: false
+
+        function registration() {
+            //check
+        }
     }
 
     onVisibleChanged: {
@@ -35,7 +39,7 @@ Item {
 
     //basically enter
     Keys.onReturnPressed: {
-        root.registrationClicked();
+        registrationButton.clicked();
     }
 
     ArrowButton {
@@ -97,9 +101,19 @@ Item {
             }
 
             RoundCornersButton {
+                id: registrationButton
+
                 Layout.minimumHeight: 50
                 Layout.minimumWidth: 250
                 Layout.alignment: Qt.AlignCenter
+
+                label.text: "Register"
+
+                onClicked: {
+                    internal.registration();
+                    root.registerClicked();
+                    root.backClicked();
+                }
             }
         }
 

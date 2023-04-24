@@ -15,6 +15,8 @@ Item {
     //to make window dragable by DraggableItem
     signal moved();
 
+    Component.onCompleted: discordIdInput.textInput.forceActiveFocus();
+
     DraggableItem {
         id: rec
 
@@ -41,7 +43,7 @@ Item {
 
                 onTextChanged: {
                     cursor.visible = true
-                    cursor.x = x + width
+                    cursor.x = x + text.width
                 }
             }
 
@@ -167,11 +169,11 @@ Item {
         anchors.topMargin: 20
 
         CustomTextField {
+            id: discordIdInput
+
             Layout.preferredHeight: 40
             Layout.preferredWidth: root.width - 40
             Layout.alignment: Qt.AlignCenter
-
-            focus: true
         }
 
         RoundCornersButton {

@@ -13,6 +13,15 @@ DraggableItem {
     property alias imgage: image
     property alias imageTranscription: imageTranscription
 
+    onVisibleChanged: {
+        if (root.visible)
+            root.forceActiveFocus();
+    }
+
+    Keys.onEscapePressed: {
+        root.backClicked();
+    }
+
     ArrowButton {
         id: backButton
 
