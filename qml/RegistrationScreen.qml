@@ -3,11 +3,13 @@ import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
 import ApplicationSettings 1.0
 
-DraggableItem {
+Item {
     id: root
 
     signal backClicked();
     signal registerClicked();
+    //ro make window dragable by DraggableItem
+    signal moved();
 
     QtObject {
         id: internal
@@ -50,24 +52,34 @@ DraggableItem {
         }
     }
 
-    ColumnLayout {
+    DraggableItem {
+        id: header
+
         width: root.width
-        height: root.height - backButton.height
+        height: root.height / 3 - backButton.height
         anchors.top: backButton.bottom
 
-        Item {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            Layout.alignment: Qt.AlignCenter
+        target: root
 
-            Text {
-                anchors.centerIn: parent
-
-                text: "Registration"
-                font.pixelSize: 35
-                font.family: AppSettings.fontFamily
-            }
+        onPositionChanged: {
+            root.moved();
         }
+
+        Text {
+            anchors.centerIn: parent
+
+            text: "Registration"
+            font.pixelSize: 35
+            font.family: AppSettings.fontFamily
+        }
+
+    }
+
+    ColumnLayout {
+        anchors.top: header.bottom
+        anchors.right: parent.right
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
 
         ColumnLayout {
             Layout.fillHeight: true
@@ -91,6 +103,11 @@ DraggableItem {
             }
         }
 
+        Item {
+            Layout.minimumHeight: 20
+            Layout.fillWidth: true
+        }
+
         RowLayout {
             Layout.fillHeight: true
             Layout.fillWidth: true
@@ -101,7 +118,6 @@ DraggableItem {
             Item {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
-                Layout.alignment: Qt.AlignCenter
 
                 Text {
                     anchors.centerIn: parent
@@ -144,7 +160,7 @@ DraggableItem {
         Item {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            Layout.alignment: Qt.AlignCenter
         }
     }
 }
+

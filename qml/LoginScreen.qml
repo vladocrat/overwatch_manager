@@ -12,7 +12,7 @@ Item {
     signal idInfoCliked();
     //registration required
     signal noAccountClicked();
-    //to make window dragable by rectangle
+    //to make window dragable by DraggableItem
     signal moved();
 
     DraggableItem {

@@ -13,6 +13,15 @@ Window {
 
     visible: true
 
+    QtObject {
+        id: internal
+
+        function move(relative) {
+            root.x += relative.x
+            root.y += relative.y
+        }
+    }
+
     PageManager {
         id: manager
 
@@ -27,8 +36,7 @@ Window {
         visible: false
 
         onMoved: {
-            root.x += loginScreen.x
-            root.y += loginScreen.y
+            internal.move(loginScreen);
         }
 
         onLoginClicked: {
@@ -59,7 +67,10 @@ Window {
         id: registrationScreen
 
         visible: false
-        target: root
+
+        onMoved: {
+            internal.move(registrationScreen);
+        }
 
         onBackClicked: {
             manager.pop();

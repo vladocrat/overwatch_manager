@@ -17,8 +17,6 @@ Item {
     QtObject {
         id: internal
 
-        property var indicies: [0, 1, 2, 3];
-
         function isDigit(event) {
             return (event.key >= Qt.Key_0 && event.key <= Qt.Key_9);
         }
