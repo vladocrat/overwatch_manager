@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.15
+import ApplicationSettings 1.0
 
 Rectangle {
     id: root
@@ -25,6 +26,7 @@ Rectangle {
 
             text: root.digit.toString();
             font.pixelSize: 20
+            font.family: AppSettings.fontFamily
         }
 
         Rectangle {
@@ -42,6 +44,16 @@ Rectangle {
                 loops: Animation.Infinite
                 running: true
             }
+        }
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        hoverEnabled: true
+        cursorShape: Qt.IBeamCursor
+
+        onPressed: {
+            root.forceActiveFocus();
         }
     }
 }
