@@ -37,7 +37,7 @@ DraggableItem {
 
                 text: "Registration"
                 font.pixelSize: 35
-                font.family: "Helvetica Neue"
+                font.family: AppSettings.fontFamily
             }
         }
 
@@ -52,16 +52,6 @@ DraggableItem {
                 id: ma
 
                 anchors.fill: parent
-                ToolTip.visible: false;
-                ToolTip.text: "text"
-
-                onEntered: {
-                    ToolTip.visible = true;
-                }
-
-                onExited: {
-                    ToolTip.visible = false;
-                }
             }
         }
 
@@ -82,7 +72,7 @@ DraggableItem {
 
                     text: "Enter the code recieved from the bot"
                     font.pixelSize: 20
-                    font.family: "Helvetica Neue"
+                    font.family: AppSettings.fontFamily
 
                     CustomToolTip {
                         id: toolTip

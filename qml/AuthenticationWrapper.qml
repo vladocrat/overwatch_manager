@@ -6,8 +6,6 @@ import QtQuick.Controls 2.1
 Window {
     id: root
 
-    property string fontFamily: "Helvetica Neue"
-
     minimumWidth: Screen.width * 0.15
     minimumHeight: Screen.height * 0.4
     maximumWidth: Screen.width * 0.15

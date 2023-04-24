@@ -1,4 +1,5 @@
 import QtQuick 2.15
+import ApplicationSettings 1.0
 
 Rectangle {
     id: root
@@ -30,7 +31,7 @@ Rectangle {
         anchors.centerIn: parent
 
         text: qsTr("Log In")
-        font.family: "Helvetica Neue"
+        font.family: AppSettings.fontFamily
         font.pixelSize: 16
         color: colors.textDefault
     }

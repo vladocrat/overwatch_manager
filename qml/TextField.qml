@@ -20,7 +20,7 @@ Rectangle {
         id: internal
 
         property int pixelSize: 16
-        property string family: "Helvetica Neue"
+        property string family: AppSettings.fontFamily
     }
 
     Label {
@@ -68,6 +68,7 @@ Rectangle {
         anchors.fill: parent
         hoverEnabled: true
         cursorShape: Qt.IBeamCursor
+
         onPressed: {
             input.forceActiveFocus();
         }

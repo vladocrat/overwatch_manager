@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.15
+import ApplicationSettings 1.0
 
 DraggableItem {
     id: root
@@ -48,7 +49,7 @@ DraggableItem {
 
                 text: "What is a discord id?"
                 font.pixelSize: 35
-                font.family: "Helvetica Neue"
+                font.family: AppSettings.fontFamily
             }
         }
 
@@ -71,7 +72,7 @@ DraggableItem {
                 textFormat: Text.RichText
                 text: "Discord id is a unique way for discord to identify you!<br>It consists of your nickname and 4 digits<br>Your discord id can be found in the settings<br>or at the bottom left corner just near your name."
                 font.pixelSize: 15
-                font.family: "Helvetica Neue"
+                font.family: AppSettings.fontFamily
             }
         }
 
@@ -102,7 +103,7 @@ DraggableItem {
                 anchors.centerIn: parent
 
                 font.pixelSize: 15
-                font.family: "Helvetica Neue"
+                font.family: AppSettings.fontFamily
                 text: "In this case full discord id is: Sherlock#0238"
             }
         }

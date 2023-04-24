@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.1
 import FPSText 1.0
+import ApplicationSettings 1.0
 
 Item {
     id: root
@@ -13,8 +14,6 @@ Item {
     signal noAccountClicked();
     //to make window dragable by rectangle
     signal moved();
-
-    property string fontFamily: "Helvetica Neue"
 
     DraggableItem {
         id: rec
@@ -37,7 +36,7 @@ Item {
             Text {
                 id: text
                 text: ""
-                font.family: root.fontFamily
+                font.family: AppSettings.fontFamily
                 font.pixelSize: 30
 
                 onTextChanged: {

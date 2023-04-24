@@ -1,4 +1,5 @@
 import QtQuick 2.15
+import ApplicationSettings 1.0
 
 Item {
     id: root
@@ -14,7 +15,7 @@ Item {
         id: linkText
         text: root.text
         font.underline: true
-        font.family: "Helvetica Neue"
+        font.family: AppSettings.fontFamily
         color: root.defaultColor
         anchors.centerIn: parent
 

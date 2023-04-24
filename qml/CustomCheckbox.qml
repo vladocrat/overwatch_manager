@@ -1,10 +1,11 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.0
+import ApplicationSettings 1.0
 
 CheckBox {
     id: root
 
-    font.family: "Helvetica Neue"
+    font.family: AppSettings.fontFamily
     text: "Remember me"
     font.pixelSize: 14
     checked: false
