@@ -8,6 +8,7 @@
 #include "configurer.h"
 #include "clientconnection.h"
 #include "fpstext.h"
+#include "clipboardproxy.h"
 
 #define client ClientConnection::instance()
 #define configurer Config::Configurer("settings.ini")
@@ -26,6 +27,7 @@ void registerTypes()
 {
     qmlRegisterSingletonType(QUrl("qrc:/qml/ApplicationSettings.qml"), "ApplicationSettings", 1, 0, "AppSettings");
 
+    QmlHelper::ClipboardProxy::registerType();
     FPSText::registerType();
 }
 

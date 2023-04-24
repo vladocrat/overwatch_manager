@@ -30,6 +30,7 @@ set(PROJECT_SOURCES
         configs/configurer.h configs/configurer.cpp
         configs/networkconfig.h configs/networkconfig.cpp
         components/fpstext.h components/fpstext.cpp
+        components/clipboardproxy.h components/clipboardproxy.cpp
         qml.qrc
         src.qrc
 )

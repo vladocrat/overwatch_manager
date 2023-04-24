@@ -7,10 +7,6 @@ Rectangle {
     property int digit
     property alias text: digitText.text
 
-    function isDigit(event) {
-        return (event.key >= Qt.Key_0 && event.key <= Qt.Key_9);
-    }
-
     function setDigit(event) {
         root.digit = (event.key - Qt.Key_0);
     }
