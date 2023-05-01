@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.15
 import ApplicationSettings 1.0
+import Controls 1.0
 
 DraggableItem {
     id: root

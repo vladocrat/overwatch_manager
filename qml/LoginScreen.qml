@@ -3,6 +3,7 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.1
 import FPSText 1.0
 import ApplicationSettings 1.0
+import Controls 1.0
 
 Item {
     id: root

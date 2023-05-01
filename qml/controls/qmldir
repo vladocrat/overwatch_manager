@@ -1,0 +1,4 @@
+module Controls
+
+ArrowButton 1.0 ArrowButton.qml
+RoundCornersButton 1.0 RoundCornersButton.qml

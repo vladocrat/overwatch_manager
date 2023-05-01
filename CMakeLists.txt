@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CONFIGS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/configs)
 set(NETWORK_PATH ${CMAKE_CURRENT_SOURCE_DIR}/network)
 set(COMPONENTS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/components)
+set(QML_PATH ${CMAKE_CURRENT_SOURCE_DIR}/qml)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
@@ -22,17 +23,26 @@ include_directories(${NETWORK_PATH})
 include_directories(${CONFIGS_PATH})
 include_directories(${COMPONENTS_PATH})
 
+set(NETWORK_SRC
+    network/connection.h network/connection.cpp
+    network/clientconnection.h network/clientconnection.cpp
+    network/protocol.h)
+
+set(CONFIGS_SRC
+    configs/configurer.h configs/configurer.cpp
+    configs/networkconfig.h configs/networkconfig.cpp)
+
+set(COMPONENTS_SRC
+    components/fpstext.h components/fpstext.cpp
+    components/clipboardproxy.h components/clipboardproxy.cpp)
+
 set(PROJECT_SOURCES
-        main.cpp
-        network/connection.h network/connection.cpp
-        network/clientconnection.h network/clientconnection.cpp
-        network/protocol.h
-        configs/configurer.h configs/configurer.cpp
-        configs/networkconfig.h configs/networkconfig.cpp
-        components/fpstext.h components/fpstext.cpp
-        components/clipboardproxy.h components/clipboardproxy.cpp
-        qml.qrc
-        src.qrc
+    main.cpp
+    ${NETWORK_SRC}
+    ${CONFIGS_SRC}
+    ${COMPONENTS_SRC}
+    qml.qrc
+    src.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -72,6 +82,8 @@ set_target_properties(overwatch_manager PROPERTIES
 install(TARGETS overwatch_manager
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+
+install(FILES qmldir DESTINATION ${QML_PATH}/Controls)
 
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_import_qml_plugins(overwatch_manager)

@@ -11,12 +11,13 @@
         <file>qml/LoginScreen.qml</file>
         <file>qml/IDInfoScreen.qml</file>
         <file>qml/RegistrationScreen.qml</file>
-        <file>qml/RoundCornersButton.qml</file>
         <file>qml/DraggableItem.qml</file>
-        <file>qml/ArrowButton.qml</file>
         <file>qml/CustomToolTip.qml</file>
         <file>qml/ApplicationSettings.qml</file>
         <file>qml/SingleDigitInput.qml</file>
         <file>qml/RegistrationInput.qml</file>
+        <file>qml/Controls/qmldir</file>
+        <file>qml/Controls/ArrowButton.qml</file>
+        <file>qml/Controls/RoundCornersButton.qml</file>
     </qresource>
 </RCC>

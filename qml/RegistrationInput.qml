@@ -14,6 +14,10 @@ Item {
             digit1Rect.forceActiveFocus();
     }
 
+    Clipboard {
+        id: clipboard
+    }
+
     QtObject {
         id: internal
 
@@ -39,6 +43,7 @@ Item {
 
     RowLayout {
         anchors.centerIn: parent
+
         spacing: 10
 
         SingleDigitInput {
@@ -46,10 +51,6 @@ Item {
 
             width: root.width * 0.2
             height: root.width * 0.2
-
-            Clipboard {
-                id: clipboard
-            }
 
             Keys.onPressed: {
                 if (internal.isDigit(event)) {

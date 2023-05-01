@@ -44,6 +44,8 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
+    engine.addImportPath("qrc:/qml");
+
     const QUrl authenticationWrapper("qrc:/qml/AuthenticationWrapper.qml");
     engine.load(authenticationWrapper);
 
