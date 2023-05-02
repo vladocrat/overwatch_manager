@@ -4,17 +4,10 @@
 
 #include "player.h"
 
-using Players = std::array<Player, 10>;
+using Players = std::array<Player, 5>;
 
-class Team
+struct Team
 {
-public:
-    Team();
-
-    const Players players() const { return m_players; }
-    void setPlayers(const Players& players) { m_players = players; }
-
-private:
-    Players m_players;
+    Players players;
 };
 
