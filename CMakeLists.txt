@@ -23,6 +23,14 @@ include_directories(${NETWORK_PATH})
 include_directories(${CONFIGS_PATH})
 include_directories(${COMPONENTS_PATH})
 
+set(QML_IMPORT_PATH ${QML_PATH})
+
+file(GLOB_RECURSE CONTROL_MODULE ${QML_PATH}/Controls/*.qml)
+add_library(Controls ${CONTROL_MODULE})
+target_link_libraries(Controls PRIVATE Qt5::Core Qt5::Quick)
+set_target_properties(Controls PROPERTIES LIBRARY_OUPUT_DIRECTORY ${CMAKE_BINARY_DIR}/qml)
+install(TARGETS Controls DESTINATION ${CMAKE_INSTALL_PREFIX}/qml)
+
 set(NETWORK_SRC
     network/connection.h network/connection.cpp
     network/clientconnection.h network/clientconnection.cpp
@@ -69,7 +77,7 @@ else()
 endif()
 
 target_link_libraries(overwatch_manager
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Controls)
 
 set_target_properties(overwatch_manager PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
@@ -83,7 +91,9 @@ install(TARGETS overwatch_manager
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
-install(FILES qmldir DESTINATION ${QML_PATH}/Controls)
+#install qmldirs
+#install(FILES qmldir DESTINATION ${QML_PATH}/Controls)
+#install(FILES qmldir DESTINATION ${QML_PATH}/Screens)
 
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_import_qml_plugins(overwatch_manager)

@@ -1,0 +1,5 @@
+module Screens
+
+IDInfoScreen 1.0 IDInfoScreen.qml
+LoginScreen 1.0 LoginScreen.qml
+RegistrationScreen 1.0 RegistrationScreen.qml

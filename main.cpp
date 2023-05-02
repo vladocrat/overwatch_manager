@@ -44,12 +44,12 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    engine.addImportPath("qrc:/qml");
 
     const QUrl authenticationWrapper("qrc:/qml/AuthenticationWrapper.qml");
-    engine.load(authenticationWrapper);
-
     const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
+
+    engine.addImportPath("qrc:/qml");
+    engine.load(authenticationWrapper);
 
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, &app,
                      [url](QObject *obj, const QUrl &objUrl)

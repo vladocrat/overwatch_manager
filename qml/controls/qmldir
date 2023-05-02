@@ -2,3 +2,9 @@ module Controls
 
 ArrowButton 1.0 ArrowButton.qml
 RoundCornersButton 1.0 RoundCornersButton.qml
+CustomCheckbox 1.0 CustomCheckbox.qml
+CustomTextField 1.0 CustomTextField.qml
+DraggableItem 1.0 DraggableItem.qml
+DropdownMenu 1.0 DropdownMenu.qml
+RegistrationInput 1.0 RegistrationInput.qml
+SingleDigitInput 1.0 SingleDigitInput.qml

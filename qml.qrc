@@ -1,23 +1,22 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/main.qml</file>
-        <file>qml/MenuButton.qml</file>
         <file>qml/PageManager.qml</file>
         <file>qml/AuthenticationWrapper.qml</file>
-        <file>qml/CustomTextField.qml</file>
         <file>qml/TextLink.qml</file>
-        <file>qml/CustomCheckbox.qml</file>
-        <file>qml/DropdownMenu.qml</file>
-        <file>qml/LoginScreen.qml</file>
-        <file>qml/IDInfoScreen.qml</file>
-        <file>qml/RegistrationScreen.qml</file>
-        <file>qml/DraggableItem.qml</file>
         <file>qml/CustomToolTip.qml</file>
         <file>qml/ApplicationSettings.qml</file>
-        <file>qml/SingleDigitInput.qml</file>
-        <file>qml/RegistrationInput.qml</file>
+        <file>qml/Screens/IDInfoScreen.qml</file>
+        <file>qml/Screens/LoginScreen.qml</file>
+        <file>qml/Screens/qmldir</file>
+        <file>qml/Screens/RegistrationScreen.qml</file>
+        <file>qml/Controls/CustomCheckbox.qml</file>
+        <file>qml/Controls/CustomTextField.qml</file>
+        <file>qml/Controls/DraggableItem.qml</file>
+        <file>qml/Controls/DropdownMenu.qml</file>
+        <file>qml/Controls/MenuButton.qml</file>
+        <file>qml/Controls/RegistrationInput.qml</file>
+        <file>qml/Controls/SingleDigitInput.qml</file>
         <file>qml/Controls/qmldir</file>
-        <file>qml/Controls/ArrowButton.qml</file>
-        <file>qml/Controls/RoundCornersButton.qml</file>
     </qresource>
 </RCC>
