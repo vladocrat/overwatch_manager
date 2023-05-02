@@ -31,20 +31,8 @@ void registerTypes()
     FPSText::registerType();
 }
 
-} // Internal
-
-int main(int argc, char *argv[])
+void loadScreens(QQmlApplicationEngine& engine, QGuiApplication& app)
 {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#endif
-    QGuiApplication app(argc, argv);
-
-    Internal::registerTypes();
-
-    QQmlApplicationEngine engine;
-
-
     const QUrl authenticationWrapper("qrc:/qml/AuthenticationWrapper.qml");
     const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
 
@@ -66,7 +54,7 @@ int main(int argc, char *argv[])
     if (objects.size() <= 0)
     {
         qDebug() << "engine has no children";
-        return -1;
+        return;
     }
 
     auto authWindow = qobject_cast<QQuickWindow*>(objects.at(0));
@@ -74,7 +62,7 @@ int main(int argc, char *argv[])
     if (!authWindow)
     {
         qDebug() << "auth window is nullptr";
-        return -1;
+        return;
     }
 
     QObject::connect(authWindow, &QQuickWindow::visibilityChanged, &app, [authWindow, objects]()
@@ -95,6 +83,23 @@ int main(int argc, char *argv[])
 
         //mainWindow->setProperty("visible", QVariant(true));
     });
+
+}
+
+} // Internal
+
+int main(int argc, char *argv[])
+{
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#endif
+    QGuiApplication app(argc, argv);
+
+    Internal::registerTypes();
+
+    QQmlApplicationEngine engine;
+
+
 
     return app.exec();
 }

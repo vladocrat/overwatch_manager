@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CONFIGS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/configs)
 set(NETWORK_PATH ${CMAKE_CURRENT_SOURCE_DIR}/network)
 set(COMPONENTS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/components)
+set(BALANCER_PATH ${CMAKE_CURRENT_SOURCE_DIR}/balancer)
 set(QML_PATH ${CMAKE_CURRENT_SOURCE_DIR}/qml)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
@@ -22,14 +23,9 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/settings.ini ${CMAKE_CURRENT_BINARY_D
 include_directories(${NETWORK_PATH})
 include_directories(${CONFIGS_PATH})
 include_directories(${COMPONENTS_PATH})
+include_directories(${BALANCER_PATH})
 
 set(QML_IMPORT_PATH ${QML_PATH})
-
-file(GLOB_RECURSE CONTROL_MODULE ${QML_PATH}/Controls/*.qml)
-add_library(Controls ${CONTROL_MODULE})
-target_link_libraries(Controls PRIVATE Qt5::Core Qt5::Quick)
-set_target_properties(Controls PROPERTIES LIBRARY_OUPUT_DIRECTORY ${CMAKE_BINARY_DIR}/qml)
-install(TARGETS Controls DESTINATION ${CMAKE_INSTALL_PREFIX}/qml)
 
 set(NETWORK_SRC
     network/connection.h network/connection.cpp
@@ -44,11 +40,16 @@ set(COMPONENTS_SRC
     components/fpstext.h components/fpstext.cpp
     components/clipboardproxy.h components/clipboardproxy.cpp)
 
+set(BALANCER_SRC
+    balancer/player.h balancer/player.cpp
+    balancer/team.h balancer/team.cpp)
+
 set(PROJECT_SOURCES
     main.cpp
     ${NETWORK_SRC}
     ${CONFIGS_SRC}
     ${COMPONENTS_SRC}
+    ${BALANCER_SRC}
     qml.qrc
     src.qrc
 )
