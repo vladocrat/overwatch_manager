@@ -5,7 +5,16 @@ SimpleBalancer::SimpleBalancer()
 
 }
 
-BalancedTeams SimpleBalancer::balance()
+SimpleBalancer::~SimpleBalancer()
+{
+
+}
+
+BalancedTeams SimpleBalancer::balance(const std::vector<Player>& players)
 {
     return {};
 }
+
+
+
+

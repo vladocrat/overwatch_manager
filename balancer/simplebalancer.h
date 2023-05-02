@@ -6,6 +6,8 @@ class SimpleBalancer final : public Balancer
 {
 public:
     SimpleBalancer();
+    ~SimpleBalancer();
+
+    BalancedTeams balance(const std::vector<Player>&);
 };
 
-#endif // SIMPLEBALANCER_H

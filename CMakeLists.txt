@@ -41,7 +41,7 @@ set(COMPONENTS_SRC
     components/clipboardproxy.h components/clipboardproxy.cpp)
 
 set(BALANCER_SRC
-    balancer/player.h balancer/player.cpp
+    balancer/player.h
     balancer/team.h balancer/team.cpp
     balancer/game.h balancer/game.cpp
     balancer/balancer.h balancer/balancer.cpp
