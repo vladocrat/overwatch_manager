@@ -1,7 +1,7 @@
 #pragma once
 
 #include <typeinfo>
-#include <array>
+#include <vector>
 
 #include <QString>
 
@@ -24,15 +24,13 @@ struct Role
     Type type;
 };
 
-using Roles = std::array<Role, 3>;
-
 struct Player
 {
     const Role findPreference() const;
     const QString toString() const;
 
     QString nickname;
-    Roles roles;
+    std::vector<Role> roles;
     Role::Type preference = Role::Type::Flex;
 };
 

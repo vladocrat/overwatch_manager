@@ -14,7 +14,7 @@ set(NETWORK_PATH ${CMAKE_CURRENT_SOURCE_DIR}/network)
 set(COMPONENTS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/components)
 set(BALANCER_PATH ${CMAKE_CURRENT_SOURCE_DIR}/balancer)
 set(QML_PATH ${CMAKE_CURRENT_SOURCE_DIR}/qml)
-set(UTILS_PATH ${CMAKE_CURRTENT_SOURCE_DIR}/utils)
+set(UTILS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/utils)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
@@ -51,15 +51,15 @@ set(BALANCER_SRC
     balancer/player.cpp)
 
 set(UTILS_SRC
-    utils/qstringarray.h)
+    utils/stringarray.h)
 
 set(PROJECT_SOURCES
     main.cpp
     ${NETWORK_SRC}
     ${CONFIGS_SRC}
     ${COMPONENTS_SRC}
-    ${BALANCER_SRC}
     ${UTILS_SRC}
+    ${BALANCER_SRC}
     qml.qrc
     src.qrc
 )

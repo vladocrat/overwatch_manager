@@ -5,6 +5,7 @@
 namespace Utils
 {
 
+//! Simple RAII wrapper to make array-like represantation.
 //! Every string used to constract an array should be created using this util-class
 //! to make the code less clucnky and more consistent when stringifying stuff.
 struct QStringArray
@@ -17,6 +18,13 @@ struct QStringArray
     ~QStringArray()
     {
         str += " ]";
+    }
+
+    template<class T>
+    QStringArray operator+=(T t)
+    {
+        str += t;
+        return *this;
     }
 
     QString str;

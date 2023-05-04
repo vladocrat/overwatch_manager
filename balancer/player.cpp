@@ -2,6 +2,8 @@
 
 #include <unordered_map>
 
+#include "stringarray.h"
+
 namespace Balancer
 {
 
@@ -13,7 +15,7 @@ static const std::unordered_map<Role::Type, QString, std::hash<Role::Type>> role
     {Role::Type::Flex, "Flex"},
     {Role::Type::Damage, "Damage"},
     {Role::Type::Support, "Support"},
-    {Role::Type::Flex, "Tank"}
+    {Role::Type::Tank, "Tank"}
 };
 
 static const QString roleTypeToString(Role::Type type)
@@ -21,13 +23,13 @@ static const QString roleTypeToString(Role::Type type)
    return roleTypeStr.find(type)->second;
 }
 
-static const QString playersToString(const std::array<Player, 5>& players)
+static const Utils::QStringArray rolesToString(const std::vector<Role>& roles)
 {
-    QString retVal;
+    Utils::QStringArray retVal;
 
-    for (const auto& player: players)
+    for (const auto& role: roles)
     {
-        retVal += player.toString() + " ";
+        retVal += role.toString() + " ";
     }
 
     return retVal;
@@ -51,12 +53,26 @@ const Role Player::findPreference() const
 
 const QString Player::toString() const
 {
-
+    return QString()
+            .append("Player: ")
+            .append("{ ")
+            .append(nickname)
+            .append(" | ")
+            .append(Internal::rolesToString(roles).str)
+            .append(" | ")
+            .append(Internal::roleTypeToString(preference))
+            .append(" }");
 }
 
 const QString Role::toString() const
 {
-    return {};
+    return QString()
+            .append("Role: ")
+            .append("{ ")
+            .append(Internal::roleTypeToString(type))
+            .append(" | ")
+            .append(QString::number(rank))
+            .append(" }");
 }
 
 

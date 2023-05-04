@@ -2,44 +2,46 @@
 
 #include <unordered_map>
 
+#include "stringarray.h"
+
 namespace Balancer
 {
 
 namespace Internal
 {
 
-    static const std::unordered_map<Team::Color, std::string, std::hash<Team::Color>> colorStr
+    static const std::unordered_map<Team::Color, QString, std::hash<Team::Color>> colorStr
     {
         {Team::Color::None, "None"},
         {Team::Color::Blue, "Blue"},
         {Team::Color::Red, "Red"}
     };
 
-    static const std::string colorToString(Team::Color color)
+    static const QString colorToString(Team::Color color)
     {
         return colorStr.find(color)->second;
     }
 
-    static const std::string playersToString(const std::array<Player, 5>& players)
+    static const QString playersToString(const std::array<Player, 5>& players)
     {
-        std::string retVal;
+        Utils::QStringArray retVal;
 
         for (const auto& player: players)
         {
-            retVal += player.
+            retVal.str += player.toString();
         }
 
-        return retVal;
+        return retVal.str;
     }
 
 } // Internal
 
-const std::string Team::toString() const
+const QString Team::toString() const
 {
-    return std::string()
+    return QString()
             .append("Name:" + name)
             .append(" Color: " + Internal::colorToString(color))
-            .append("Players: " + std::string(players.begin(), players.end()));
+            .append(" Players: " + Internal::playersToString(players));
 }
 
 // Internal

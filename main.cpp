@@ -100,10 +100,23 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    std::vector<Balancer::Player> players;
+    std::vector<Balancer::Player> players = {
+        {"sherlock",
+        {
+            {4000, Balancer::Role::Type::Support},
+            {3000, Balancer::Role::Type::Damage},
+            {2000, Balancer::Role::Type::Tank},
+        },
+        Balancer::Role::Type::Flex}
+    };
+
+    for (const auto& player: players)
+    {
+        qDebug() << player.toString();
+    }
 
     Balancer::SimpleBalancer balancer;
-    balancer.balance(players);
+    //balancer.balance(players);
 
     return app.exec();
 }
