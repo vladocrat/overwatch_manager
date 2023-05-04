@@ -2,6 +2,9 @@
 
 #include <algorithm>
 
+namespace Balancer
+{
+
 namespace Constants
 {
     static const uint32_t THRESHOLD = 500;
@@ -81,12 +84,12 @@ BalancedTeams SimpleBalancer::formTeams(const std::vector<Player>& tanks,
                               const std::vector<Player>& supports)
 {
     auto dmgPlayers = getPlayers(damage);
-    PlayerGroup blueDmg = dmgPlayers.first;
-    PlayerGroup redDmg = dmgPlayers.second;
+    auto blueDmg = dmgPlayers.first;
+    auto redDmg = dmgPlayers.second;
 
     auto supportPlayers = getPlayers(supports);
-    PlayerGroup blueSupports = supportPlayers.first;
-    PlayerGroup redSupports = supportPlayers.second;
+    auto blueSupports = supportPlayers.first;
+    auto redSupports = supportPlayers.second;
 
     Team blue;
     Team red;
@@ -148,6 +151,4 @@ SimpleBalancer::TeamPlayerGroups SimpleBalancer::getPlayers(const std::vector<Pl
     return {blue, red};
 }
 
-
-
-
+} // Balancer

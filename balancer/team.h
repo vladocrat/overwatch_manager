@@ -4,6 +4,9 @@
 
 #include "player.h"
 
+namespace Balancer
+{
+
 using Players = std::array<Player, 5>;
 
 struct Team
@@ -20,3 +23,4 @@ struct Team
     Color color = Color::None;
 };
 
+} // Balancer

@@ -5,6 +5,9 @@
 #include "player.h"
 #include "team.h"
 
+namespace Balancer
+{
+
 struct BalancedTeams
 {
     Team blue;
@@ -19,4 +22,6 @@ public:
 
     virtual BalancedTeams balance(const std::vector<Player>&) = 0;
 };
+
+} // Balancer
 

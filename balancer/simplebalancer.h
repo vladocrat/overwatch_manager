@@ -2,6 +2,9 @@
 
 #include "balancer.h"
 
+namespace Balancer
+{
+
 class SimpleBalancer final : public Balancer
 {
 public:
@@ -26,3 +29,4 @@ private:
     TeamPlayerGroups getPlayers(const std::vector<Player>&);
 };
 
+} // Balancer

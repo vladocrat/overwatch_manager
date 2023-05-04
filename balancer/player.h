@@ -4,6 +4,9 @@
 #include <array>
 #include <string>
 
+namespace Balancer
+{
+
 struct Role
 {
     enum class Type : uint8_t
@@ -40,3 +43,5 @@ struct Player
     Roles roles;
     Role::Type preference = Role::Type::Flex;
 };
+
+} // Balancer

@@ -2,6 +2,9 @@
 
 #include "team.h"
 
+namespace Balancer
+{
+
 class Game
 {
 public:
@@ -21,3 +24,4 @@ private:
     Team m_redTeam;
 };
 
+} // Balancer
