@@ -21,6 +21,8 @@ struct Team
     Players players;
     std::string name; // may be empty
     Color color = Color::None;
+
+    const std::string toString() const;
 };
 
 } // Balancer

@@ -9,6 +9,7 @@
 #include "clientconnection.h"
 #include "fpstext.h"
 #include "clipboardproxy.h"
+#include "simplebalancer.h"
 
 #define client ClientConnection::instance()
 #define configurer Config::Configurer("settings.ini")
@@ -99,7 +100,10 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
+    std::vector<Balancer::Player> players;
 
+    Balancer::SimpleBalancer balancer;
+    balancer.balance(players);
 
     return app.exec();
 }

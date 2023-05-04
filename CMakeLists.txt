@@ -14,6 +14,7 @@ set(NETWORK_PATH ${CMAKE_CURRENT_SOURCE_DIR}/network)
 set(COMPONENTS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/components)
 set(BALANCER_PATH ${CMAKE_CURRENT_SOURCE_DIR}/balancer)
 set(QML_PATH ${CMAKE_CURRENT_SOURCE_DIR}/qml)
+set(UTILS_PATH ${CMAKE_CURRTENT_SOURCE_DIR}/utils)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
@@ -24,6 +25,7 @@ include_directories(${NETWORK_PATH})
 include_directories(${CONFIGS_PATH})
 include_directories(${COMPONENTS_PATH})
 include_directories(${BALANCER_PATH})
+include_directories(${UTILS_PATH})
 
 set(QML_IMPORT_PATH ${QML_PATH})
 
@@ -45,7 +47,11 @@ set(BALANCER_SRC
     balancer/team.h balancer/team.cpp
     balancer/game.h balancer/game.cpp
     balancer/balancer.h balancer/balancer.cpp
-    balancer/simplebalancer.h balancer/simplebalancer.cpp)
+    balancer/simplebalancer.h balancer/simplebalancer.cpp
+    balancer/player.cpp)
+
+set(UTILS_SRC
+    utils/qstringarray.h)
 
 set(PROJECT_SOURCES
     main.cpp
@@ -53,6 +59,7 @@ set(PROJECT_SOURCES
     ${CONFIGS_SRC}
     ${COMPONENTS_SRC}
     ${BALANCER_SRC}
+    ${UTILS_SRC}
     qml.qrc
     src.qrc
 )

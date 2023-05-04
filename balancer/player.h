@@ -2,7 +2,8 @@
 
 #include <typeinfo>
 #include <array>
-#include <string>
+
+#include <QString>
 
 namespace Balancer
 {
@@ -17,6 +18,8 @@ struct Role
         Support
     };
 
+    const QString toString() const;
+
     uint32_t rank;
     Type type;
 };
@@ -25,21 +28,10 @@ using Roles = std::array<Role, 3>;
 
 struct Player
 {
-    Role findPreference() const
-    {
-        for (const auto& role: roles)
-        {
-            if (role.type == preference)
-            {
-                return role;
-            }
-        }
+    const Role findPreference() const;
+    const QString toString() const;
 
-        //should never be hit
-        return {};
-    }
-
-    std::string nickname;
+    QString nickname;
     Roles roles;
     Role::Type preference = Role::Type::Flex;
 };
