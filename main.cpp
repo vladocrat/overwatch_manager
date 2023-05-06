@@ -243,13 +243,9 @@ int main(int argc, char *argv[])
     };
     */
 
-//    Balancer::Team t("very cool team", blue);
-//    Balancer::Team t2("another cool team", red);
-//    qDebug() << t.toString();
-//    qDebug() << t2.toString();
-
     Balancer::SimpleBalancer balancer;
     auto teams = balancer.balance(blue);
+
     auto printPlayers = [](const Balancer::Team& t)
     {
         auto players = t.players();
@@ -260,9 +256,20 @@ int main(int argc, char *argv[])
         }
     };
 
-    printPlayers(teams.red);
+    auto printRoles = [](const Balancer::Team& t)
+    {
+        auto players = t.players();
+
+        for (const auto& player: players)
+        {
+            qDebug() << player.findPreference().toString() << "\n";
+        }
+    };
+
+
+    printRoles(teams.red);
     qDebug() << " ----------- ";
-    printPlayers(teams.blue);
+    printRoles(teams.blue);
 
     return app.exec();
 }

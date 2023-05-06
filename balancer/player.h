@@ -29,6 +29,14 @@ struct Player
     const Role findPreference() const;
     const QString toString() const;
 
+    friend bool operator<(const Player& first, const Player& second)
+    {
+        auto fRank = first.findPreference().rank;
+        auto sRank = second.findPreference().rank;
+
+        return fRank < sRank;
+    }
+
     QString nickname;
     std::vector<Role> roles;
     Role::Type preference = Role::Type::Flex;

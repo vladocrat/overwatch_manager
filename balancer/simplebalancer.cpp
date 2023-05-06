@@ -1,6 +1,10 @@
 #include "simplebalancer.h"
 
 #include <algorithm>
+#include <cmath>
+
+#include <QDebug>
+#include <QMap>
 
 namespace Balancer
 {
@@ -53,14 +57,32 @@ using TeamPlayerGroups = std::pair<PlayerGroup, PlayerGroup>;
 
 TeamPlayerGroups getPlayers(const QVector<Player>& role)
 {
+    QMap<Player, bool> playerTaken;
+
+    for (const auto& player: role)
+    {
+        playerTaken.insert(player, true);
+    }
+
+    auto taken = [&](const Player& p)
+    {
+        return !playerTaken.value(p);
+    };
+
     QVector<Player> blue;
     QVector<Player> red;
 
     bool found = false;
 
-    for (size_t i = 0; i < role.size(); i++)
+    for (size_t i = 0; i < playerTaken.size(); i++)
     {
         found = false;
+
+        if (taken(role[i]))
+        {
+            continue;
+        }
+
         auto first = role[i].findPreference().rank;
 
         for (size_t j = 0; j < role.size(); j++)
@@ -75,16 +97,37 @@ TeamPlayerGroups getPlayers(const QVector<Player>& role)
                 continue;
             }
 
-            auto second = role[j].findPreference().rank;
-
-            if ((first - second) > Constants::THRESHOLD)
+            if (taken(role[j]))
             {
                 continue;
             }
 
-            found = true;
-            blue.push_back(role[i]);
-            red.push_back(role[j]);
+            auto second = role[j].findPreference().rank;
+
+            qDebug() << "first: " << first << " second: " << second;
+
+            auto comparing = [&](const uint32_t first, const uint32_t second)
+            {
+                if ((first - second) > Constants::THRESHOLD)
+                {
+                    return;
+                }
+
+                found = true;
+                blue.push_back(role[i]);
+                playerTaken[role[i]] = false;
+                red.push_back(role[j]);
+                playerTaken[role[j]] = false;
+            };
+
+            if (first < second)
+            {
+                comparing(second, first);
+            }
+            else
+            {
+                comparing(first, second);
+            }
         }
     }
 
@@ -158,7 +201,7 @@ BalancedTeams SimpleBalancer::balance(const QVector<Player>& players)
         auto firstRole = first.findPreference();
         auto secondRole = second.findPreference();
 
-        return firstRole.rank < secondRole.rank;
+        return firstRole.rank > secondRole.rank;
     };
 
     std::sort(tanks.begin(), tanks.end(), sortFunc);
