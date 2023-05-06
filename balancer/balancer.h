@@ -1,6 +1,6 @@
 #pragma once
 
-#include <vector>
+#include <QVector>
 
 #include "player.h"
 #include "team.h"
@@ -20,7 +20,7 @@ public:
     Balancer();
     virtual ~Balancer();
 
-    virtual BalancedTeams balance(const std::vector<Player>&) = 0;
+    virtual BalancedTeams balance(const QVector<Player>&) = 0;
 };
 
 } // Balancer

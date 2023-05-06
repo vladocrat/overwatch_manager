@@ -2,9 +2,11 @@
 
 #include <QString>
 
+
 namespace Utils
 {
 
+//TODO pretty dumb, remove
 //! Simple RAII wrapper to make array-like represantation.
 //! Every string used to constract an array should be created using this util-class
 //! to make the code less clucnky and more consistent when stringifying stuff.

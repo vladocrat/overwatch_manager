@@ -16,6 +16,7 @@
 
 namespace Internal
 {
+
 void initClient()
 {
     auto networkConfig = configurer.configureNetwork();
@@ -100,23 +101,168 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    std::vector<Balancer::Player> players = {
-        {"sherlock",
+    QVector<Balancer::Player> blue = {
         {
-            {4000, Balancer::Role::Type::Support},
-            {3000, Balancer::Role::Type::Damage},
-            {2000, Balancer::Role::Type::Tank},
+            "sherlock",
+            {
+                {4000, Balancer::Role::Type::Support},
+                {3000, Balancer::Role::Type::Damage},
+                {2000, Balancer::Role::Type::Tank},
+            },
+            Balancer::Role::Type::Support
         },
-        Balancer::Role::Type::Flex}
+        {
+            "tacocat",
+            {
+                {3000, Balancer::Role::Type::Support},
+                {3000, Balancer::Role::Type::Damage},
+                {3000, Balancer::Role::Type::Tank}
+            },
+            Balancer::Role::Type::Tank
+        },
+        {
+            "tooslow",
+            {
+                {1234, Balancer::Role::Type::Support},
+                {2500, Balancer::Role::Type::Damage},
+                {3450, Balancer::Role::Type::Tank}
+            },
+            Balancer::Role::Type::Damage
+        },
+        {
+            "jakal",
+            {
+                {2500, Balancer::Role::Type::Support},
+                {2500, Balancer::Role::Type::Damage},
+                {2500, Balancer::Role::Type::Tank}
+            },
+            Balancer::Role::Type::Damage
+        },
+        {
+            "jason",
+            {
+                {3400, Balancer::Role::Type::Support},
+                {3400, Balancer::Role::Type::Damage},
+                {3400, Balancer::Role::Type::Tank}
+            },
+            Balancer::Role::Type::Support
+        },
+        {
+            "a",
+            {
+                {3000, Balancer::Role::Type::Support},
+                {3000, Balancer::Role::Type::Damage},
+                {2000, Balancer::Role::Type::Tank},
+            },
+            Balancer::Role::Type::Tank
+        },
+        {
+            "b",
+            {
+                {4000, Balancer::Role::Type::Support},
+                {4000, Balancer::Role::Type::Damage},
+                {4000, Balancer::Role::Type::Tank},
+            },
+            Balancer::Role::Type::Damage
+        },
+        {
+            "c",
+            {
+                {3500, Balancer::Role::Type::Support},
+                {3500, Balancer::Role::Type::Damage},
+                {3400, Balancer::Role::Type::Tank},
+            },
+            Balancer::Role::Type::Damage
+        },
+        {
+            "d",
+            {
+                {3000, Balancer::Role::Type::Support},
+                {3000, Balancer::Role::Type::Damage},
+                {3000, Balancer::Role::Type::Tank},
+            },
+            Balancer::Role::Type::Support
+        },
+        {
+            "e",
+            {
+                {3500, Balancer::Role::Type::Support},
+                {3500, Balancer::Role::Type::Damage},
+                {3500, Balancer::Role::Type::Tank},
+            },
+            Balancer::Role::Type::Support
+        }
     };
 
-    for (const auto& player: players)
-    {
-        qDebug() << player.toString();
-    }
+    /*QVector<Balancer::Player> red = {
+        {
+            "a",
+            {
+                {3000, Balancer::Role::Type::Support},
+                {3000, Balancer::Role::Type::Damage},
+                {2000, Balancer::Role::Type::Tank},
+            },
+            Balancer::Role::Type::Tank
+        },
+        {
+            "b",
+            {
+                {4000, Balancer::Role::Type::Support},
+                {4000, Balancer::Role::Type::Damage},
+                {4000, Balancer::Role::Type::Tank},
+            },
+            Balancer::Role::Type::Damage
+        },
+        {
+            "c",
+            {
+                {3500, Balancer::Role::Type::Support},
+                {3500, Balancer::Role::Type::Damage},
+                {3400, Balancer::Role::Type::Tank},
+            },
+            Balancer::Role::Type::Damage
+        },
+        {
+            "d",
+            {
+                {3000, Balancer::Role::Type::Support},
+                {3000, Balancer::Role::Type::Damage},
+                {3000, Balancer::Role::Type::Tank},
+            },
+            Balancer::Role::Type::Support
+        },
+        {
+            "e",
+            {
+                {3500, Balancer::Role::Type::Support},
+                {3500, Balancer::Role::Type::Damage},
+                {3500, Balancer::Role::Type::Tank},
+            },
+            Balancer::Role::Type::Support
+        }
+    };
+    */
+
+//    Balancer::Team t("very cool team", blue);
+//    Balancer::Team t2("another cool team", red);
+//    qDebug() << t.toString();
+//    qDebug() << t2.toString();
 
     Balancer::SimpleBalancer balancer;
-    //balancer.balance(players);
+    auto teams = balancer.balance(blue);
+    auto printPlayers = [](const Balancer::Team& t)
+    {
+        auto players = t.players();
+
+        for (const auto& player: players)
+        {
+            qDebug() << player.toString() << "\n";
+        }
+    };
+
+    printPlayers(teams.red);
+    qDebug() << " ----------- ";
+    printPlayers(teams.blue);
 
     return app.exec();
 }
